@@ -1,3 +1,5 @@
+<img src="app/public/icons/icon-128.png" width="72" height="72" alt="留底图标">
+
 # 留底 · Upload Ledger
 
 [![最新版本](https://img.shields.io/github/v/release/bocchitherock888-ux/upload-ledger?label=release&color=234a3d)](https://github.com/bocchitherock888-ux/upload-ledger/releases/latest)
