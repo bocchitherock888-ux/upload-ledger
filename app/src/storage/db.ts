@@ -20,7 +20,7 @@ export interface State {
   settingsRevision: number;
   budgetBytes: number;
   excludedFileNames: string[];
-  locale: "zh-CN" | "en-GB";
+  locale: "zh-CN" | "zh-TW" | "en-GB";
   theme: "system" | "light" | "dark";
   onboardingComplete?: boolean;
   pendingPermissionPatterns?: string[];

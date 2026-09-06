@@ -39,7 +39,7 @@ export interface BeginPayload {
 export interface SettingsPatch {
   budgetBytes?: number;
   excludedFileNames?: string[];
-  locale?: "zh-CN" | "en-GB";
+  locale?: "zh-CN" | "zh-TW" | "en-GB";
   theme?: "system" | "light" | "dark";
 }
 export interface RuntimeState {

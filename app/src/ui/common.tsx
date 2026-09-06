@@ -149,17 +149,14 @@ export function errorText(
     : error instanceof Error
       ? error.message
       : "";
-  if (code === "E_ACK_TIMEOUT")
-    return locale === "zh-CN"
-      ? "响应超时，请刷新确认本次操作结果。"
-      : "The response timed out. Refresh to check the result of this operation.";
+  if (code === "E_ACK_TIMEOUT") return t("ackTimeout");
   if (code === "E_CONFLICT") return t("changedError");
   const known = errorCodes.find((item) => item.code === code);
   return known?.[locale] || t("genericError");
 }
 
 export function useLocale(runtime?: RuntimeView) {
-  const locale: Locale = runtime?.locale === "en-GB" ? "en-GB" : "zh-CN";
+  const locale: Locale = runtime?.locale === "en-GB" ? "en-GB" : runtime?.locale === "zh-TW" ? "zh-TW" : "zh-CN";
   const dictionary = dictionaries[locale];
   return { locale, t: (key: MessageKey) => dictionary[key] };
 }

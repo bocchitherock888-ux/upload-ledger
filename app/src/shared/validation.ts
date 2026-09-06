@@ -70,7 +70,7 @@ const settingsPatch = z
       )
       .max(100)
       .optional(),
-    locale: z.enum(["zh-CN", "en-GB"]).optional(),
+    locale: z.enum(["zh-CN", "zh-TW", "en-GB"]).optional(),
     theme: z.enum(["system", "light", "dark"]).optional(),
   })
   .refine((value) => Object.keys(value).length > 0);

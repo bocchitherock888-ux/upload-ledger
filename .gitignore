@@ -5,3 +5,9 @@ deliverables/
 .DS_Store
 __pycache__/
 *.pyc
+
+app/design/
+app/implementation/BACKLOG.md
+app/implementation/COPY_REVIEW.md
+app/implementation/DECISIONS.md
+app/implementation/STATUS.md

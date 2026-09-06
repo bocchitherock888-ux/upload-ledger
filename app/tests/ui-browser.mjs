@@ -610,6 +610,43 @@ try {
     },
   );
   await check(
+    "Three language choices persist after reload and translate the popup and errors",
+    ["T052"],
+    async () => {
+      await click("Settings");
+      const language = app.getByLabel("Language", { exact: true });
+      assert.deepEqual(await language.locator("option").allTextContents(), ["简体中文", "繁體中文", "English"]);
+      await language.selectOption("zh-TW");
+      await click("Save settings");
+      await app.getByRole("button", { name: "設定", exact: true }).waitFor();
+      await app.reload();
+      await click("設定");
+      assert.equal(await app.getByLabel("語言", { exact: true }).inputValue(), "zh-TW");
+      await app.screenshot({path:resolve(out,"11-traditional-settings.png"),fullPage:true});
+      await click("網站權限");
+      await app.getByLabel("網站地址", { exact: true }).fill("invalid address");
+      await click("在此站點啟用");
+      await app.getByRole("alert").filter({hasText:"來源地址無效或不受支援"}).waitFor();
+      await click("備份與還原");
+      await app.getByText("選擇 ZIP 備份", { exact: true }).waitFor();
+      await click("附件資料庫");
+      await app.setViewportSize({width:390,height:844});
+      assert.ok(await app.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+      await app.screenshot({path:resolve(out,"12-traditional-narrow.png"),fullPage:true});
+      await app.setViewportSize({width:1380,height:950});
+      const popup=await context.newPage();
+      await popup.setViewportSize({width:380,height:640});
+      await popup.goto(`chrome-extension://${h.id}/popup.html`);
+      await popup.getByRole("button", {name:"開啟資料庫",exact:true}).waitFor();
+      await popup.screenshot({path:resolve(out,"13-traditional-popup.png"),fullPage:true});
+      await popup.close();
+      await click("設定");
+      await app.getByLabel("語言", { exact: true }).selectOption("zh-CN");
+      await click("儲存設定");
+      await click("附件资料库");
+    },
+  );
+  await check(
     "Clear-all UI requires the exact challenge and removes only the test vault",
     ["T038", "T059"],
     async () => {

@@ -575,7 +575,8 @@ export function SettingsPanel({
             onChange={(event) => setNextLocale(event.target.value as Locale)}
           >
             <option value="zh-CN">简体中文</option>
-            <option value="en-GB">English (UK)</option>
+            <option value="zh-TW">繁體中文</option>
+            <option value="en-GB">English</option>
           </select>
         </label>
         <label>

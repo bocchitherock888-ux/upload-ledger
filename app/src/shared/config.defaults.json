@@ -99,6 +99,6 @@
   ],
   "locale": {
     "default": "zh-CN",
-    "supported": ["zh-CN", "en-GB"]
+    "supported": ["zh-CN", "zh-TW", "en-GB"]
   }
 }

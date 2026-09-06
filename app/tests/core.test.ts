@@ -975,3 +975,18 @@ test("caller roles require exact extension paths, top frame, origin and normal m
     Object.assign(globalThis, { chrome: previous });
   }
 });
+
+ test("all three language choices persist without changing saved records", async () => {
+  await setup();
+  const saved = await save(new Uint8Array([1, 2, 3]));
+  for (const [revision, locale] of (["en-GB", "zh-TW", "zh-CN"] as const).entries()) {
+    await setSettings(revision, { locale }, 0);
+    const runtime = await write((tx) => state(tx));
+    assert.equal(runtime.locale, locale);
+    assert.ok(await getRecordForLocaleTest(saved.recordId!));
+  }
+});
+async function getRecordForLocaleTest(recordId: string) {
+  const db = await database();
+  try { return await db.get("records", recordId); } finally { db.close(); }
+}

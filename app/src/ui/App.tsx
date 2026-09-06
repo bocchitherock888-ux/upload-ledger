@@ -331,7 +331,7 @@ export function App() {
         <header className="topbar">
           <button
             className="mobile-menu icon-button"
-            aria-label="Menu"
+            aria-label={t("menu")}
             onClick={() => setMobileNav((value) => !value)}
           >
             <Menu size={20} />
