@@ -2,7 +2,7 @@
   "valid": true,
   "recordCount": 7,
   "objectCount": 7,
-  "auditCount": 9,
-  "uncompressedBytes": 195589,
+  "auditCount": 13,
+  "uncompressedBytes": 196551,
   "schemaValidation": "full-json-schema-plus-semantic-checks"
 }

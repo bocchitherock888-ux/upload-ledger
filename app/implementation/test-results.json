@@ -992,6 +992,11 @@
         {
           "file": "evidence/unit-tests.txt",
           "scope": "Related unit/contract assertions; full browser scenario is not implied."
+        },
+        {
+          "file": "evidence/ui-browser.json",
+          "check": "A concurrent revision preserves unsaved fields and rejects overwriting newer notes",
+          "result": "passed"
         }
       ],
       "note": "Passed in the documented synthetic test environment."

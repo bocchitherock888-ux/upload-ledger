@@ -273,37 +273,47 @@ export function Detail({
   );
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
-  const [dirty, setDirty] = useState(false);
-  const [draftRevision, setDraftRevision] = useState(record.revision);
-  const loadedId = useRef(record.recordId);
+  const dirty = useRef({ fields: false, submission: false });
+  const revisions = useRef({
+    fields: record.revision,
+    submission: record.revision,
+  });
+  const syncDraft = (next: StoredRecord) => {
+    if (!dirty.current.fields) {
+      setLabel(next.user.label || "");
+      setNote(next.user.note);
+      setTags(next.user.tags.join(", "));
+      setPinned(next.user.pinned);
+      revisions.current.fields = next.revision;
+    } else if (revisions.current.fields !== next.revision)
+      setError(t("draftConflict"));
+    if (!dirty.current.submission) {
+      setSubmission(next.submission.state);
+      revisions.current.submission = next.revision;
+    } else if (revisions.current.submission !== next.revision)
+      setError(t("draftConflict"));
+  };
   useEffect(() => {
-    if (loadedId.current !== record.recordId) {
-      loadedId.current = record.recordId;
-      setDirty(false);
-      setLabel(record.user.label || "");
-      setNote(record.user.note);
-      setTags(record.user.tags.join(", "));
-      setPinned(record.user.pinned);
-      setSubmission(record.submission.state);
-      setDraftRevision(record.revision);
-      return;
-    }
-    if (dirty) {
-      if (record.revision !== draftRevision) setError(t("changedError"));
-      return;
-    }
-    setLabel(record.user.label || "");
-    setNote(record.user.note);
-    setTags(record.user.tags.join(", "));
-    setPinned(record.user.pinned);
-    setSubmission(record.submission.state);
-    setDraftRevision(record.revision);
+    syncDraft(record);
   }, [record.recordId, record.revision]);
-  const perform = async (fn: () => Promise<unknown>, message?: string) => {
+  const perform = async (
+    kind: "fields" | "submission",
+    fn: () => Promise<StoredRecord>,
+    message?: string,
+  ) => {
     setBusy(true);
     setError("");
+    const expectedRevision = revisions.current[kind];
     try {
-      await fn();
+      const updated = await fn();
+      dirty.current[kind] = false;
+      // A successful local write can advance another local draft based on the
+      // same revision. A draft already stale before this write keeps its conflict.
+      const other = kind === "fields" ? "submission" : "fields";
+      if (revisions.current[other] === expectedRevision)
+        revisions.current[other] = updated.revision;
+      setError("");
+      syncDraft(updated);
       await onRefresh();
       if (message) announce(message);
     } catch (reason) {
@@ -365,6 +375,16 @@ export function Detail({
         <div className="alert error" role="alert">
           <CircleAlert size={17} />
           <span>{error}</span>
+          <button
+            disabled={busy}
+            onClick={() => {
+              dirty.current = { fields: false, submission: false };
+              syncDraft(record);
+              setError("");
+            }}
+          >
+            {t("reloadRecord")}
+          </button>
         </div>
       )}
       <div className="state-cards">
@@ -420,10 +440,12 @@ export function Detail({
         <h3>{t("updateSubmission")}</h3>
         <select
           aria-label={t("submitState")}
+          disabled={busy}
           value={submission}
-          onChange={(event) =>
-            setSubmission(event.target.value as SubmissionState)
-          }
+          onChange={(event) => {
+            dirty.current.submission = true;
+            setSubmission(event.target.value as SubmissionState);
+          }}
         >
           {(
             [
@@ -443,21 +465,24 @@ export function Detail({
           disabled={busy || submission === record.submission.state}
           onClick={() =>
             void perform(
-              () =>
-                command(
-                  "UI_SET_SUBMISSION",
-                  {
-                    records: [
-                      {
-                        recordId: record.recordId,
-                        expectedRevision: record.revision,
-                      },
-                    ],
-                    state: submission,
-                    note: null,
-                  },
-                  epoch,
-                ),
+              "submission",
+              async () =>
+                (
+                  await command<{ records: StoredRecord[] }>(
+                    "UI_SET_SUBMISSION",
+                    {
+                      records: [
+                        {
+                          recordId: record.recordId,
+                          expectedRevision: revisions.current.submission,
+                        },
+                      ],
+                      state: submission,
+                      note: null,
+                    },
+                    epoch,
+                  )
+                ).records[0],
               t("save"),
             )
           }
@@ -471,8 +496,13 @@ export function Detail({
           {t("label")}
           <input
             maxLength={120}
+            disabled={busy}
+            aria-label={t("label")}
             value={label}
-            onChange={(event) => setLabel(event.target.value)}
+            onChange={(event) => {
+              dirty.current.fields = true;
+              setLabel(event.target.value);
+            }}
           />
         </label>
         <label>
@@ -480,22 +510,36 @@ export function Detail({
           <textarea
             maxLength={4000}
             rows={4}
+            disabled={busy}
+            aria-label={t("note")}
             value={note}
-            onChange={(event) => setNote(event.target.value)}
+            onChange={(event) => {
+              dirty.current.fields = true;
+              setNote(event.target.value);
+            }}
           />
         </label>
         <label>
           {t("tags")}
           <input
+            disabled={busy}
+            aria-label={t("tags")}
             value={tags}
-            onChange={(event) => setTags(event.target.value)}
+            onChange={(event) => {
+              dirty.current.fields = true;
+              setTags(event.target.value);
+            }}
           />
         </label>
         <label className="check-row">
           <input
             type="checkbox"
+            disabled={busy}
             checked={pinned}
-            onChange={(event) => setPinned(event.target.checked)}
+            onChange={(event) => {
+              dirty.current.fields = true;
+              setPinned(event.target.checked);
+            }}
           />
           {t("pinned")}
         </label>
@@ -503,12 +547,13 @@ export function Detail({
           disabled={busy}
           onClick={() =>
             void perform(
+              "fields",
               () =>
-                command(
+                command<StoredRecord>(
                   "UI_SET_USER_FIELDS",
                   {
                     recordId: record.recordId,
-                    expectedRevision: record.revision,
+                    expectedRevision: revisions.current.fields,
                     fields: {
                       label: label.trim() || null,
                       note,

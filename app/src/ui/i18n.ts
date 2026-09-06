@@ -194,7 +194,10 @@ export const zh = {
   fit: "适宽",
   page: "第",
   genericError: "操作没有完成。请刷新后重试；已保存资料保持原样。",
-  changedError: "记录已经更新，页面已刷新，请重新操作。",
+  changedError: "数据已更新，请核对最新状态后重试。",
+  draftConflict:
+    "记录已更新，当前编辑已保留。请复制需要保留的内容，再载入最新记录。",
+  reloadRecord: "放弃编辑并载入最新记录",
 } as const;
 
 export type MessageKey = keyof typeof zh;
@@ -403,7 +406,10 @@ export const en: Record<MessageKey, string> = {
   page: "Page",
   genericError:
     "The action did not complete. Refresh and retry; saved data remains unchanged.",
-  changedError: "The record changed. The view has refreshed; please retry.",
+  changedError: "The data changed. Check the latest state before retrying.",
+  draftConflict:
+    "This record changed. Your draft is preserved. Copy any edits you need before loading the latest record.",
+  reloadRecord: "Discard edits and load latest record",
 };
 
 export const dictionaries = { "zh-CN": zh, "en-GB": en } as const;

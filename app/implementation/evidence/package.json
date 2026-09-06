@@ -1,8 +1,9 @@
 {
-  "sha256": "15788709b62189ccbde037cedcd6d773660306de11abfb8fa0ab89261765b072",
-  "bytes": 3182313,
+  "sha256": "6ec57f606b10bb6430a2e2f0dc48f0e8f6f1ca8ea3fa6dafdc64ac5f18ebf513",
+  "bytes": 3182634,
   "reproducible": true,
   "entries": 200,
   "version": "1.0.0",
-  "productionHostPermissions": false
+  "productionHostPermissions": false,
+  "verification": "Two independent source directories built matching ZIP bytes."
 }

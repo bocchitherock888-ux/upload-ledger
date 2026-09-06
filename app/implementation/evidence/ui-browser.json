@@ -1,5 +1,5 @@
 {
-  "startedAt": "2026-09-06T09:02:14.572Z",
+  "startedAt": "2026-09-06T09:22:10.647Z",
   "results": [
     {
       "name": "Onboarding requires explicit local plaintext acknowledgement",
@@ -7,7 +7,7 @@
         "T052"
       ],
       "status": "passed",
-      "durationMs": 364
+      "durationMs": 352
     },
     {
       "name": "Denied site permission leaves the site disabled",
@@ -15,7 +15,7 @@
         "T002"
       ],
       "status": "passed",
-      "durationMs": 143,
+      "durationMs": 145,
       "details": {
         "permissionResponse": "injected false; native grant and revoke tested separately"
       }
@@ -26,7 +26,7 @@
         "T047"
       ],
       "status": "passed",
-      "durationMs": 280
+      "durationMs": 286
     },
     {
       "name": "Details preview inert text and download preserves exact original",
@@ -37,7 +37,7 @@
         "T043"
       ],
       "status": "passed",
-      "durationMs": 591
+      "durationMs": 609
     },
     {
       "name": "Local PDF renderer displays pages offline and bounds 501-page documents",
@@ -47,7 +47,7 @@
         "T043"
       ],
       "status": "passed",
-      "durationMs": 572
+      "durationMs": 567
     },
     {
       "name": "Editable user fields, submission state, combined search and pinned filters",
@@ -57,7 +57,15 @@
         "T067"
       ],
       "status": "passed",
-      "durationMs": 809
+      "durationMs": 823
+    },
+    {
+      "name": "A concurrent revision preserves unsaved fields and rejects overwriting newer notes",
+      "ids": [
+        "T067"
+      ],
+      "status": "passed",
+      "durationMs": 682
     },
     {
       "name": "Text comparison shows deterministic edits and supports current file",
@@ -66,7 +74,7 @@
         "T045"
       ],
       "status": "passed",
-      "durationMs": 230
+      "durationMs": 214
     },
     {
       "name": "Complete backup through production UI is independently valid",
@@ -76,7 +84,7 @@
         "T069"
       ],
       "status": "passed",
-      "durationMs": 378
+      "durationMs": 362
     },
     {
       "name": "Fresh browser profile imports exact metadata and bytes; reimport preserves local edits",
@@ -87,7 +95,7 @@
         "T051"
       ],
       "status": "passed",
-      "durationMs": 2867
+      "durationMs": 3017
     },
     {
       "name": "Keyboard modal navigation and explicit deletion preserve other files",
@@ -97,7 +105,7 @@
         "T052"
       ],
       "status": "passed",
-      "durationMs": 678
+      "durationMs": 813
     },
     {
       "name": "Chinese and English light/dark layouts fit desktop and narrow windows",
@@ -106,7 +114,7 @@
         "T053"
       ],
       "status": "passed",
-      "durationMs": 812
+      "durationMs": 4332
     },
     {
       "name": "Clear-all UI requires the exact challenge and removes only the test vault",
@@ -115,7 +123,7 @@
         "T059"
       ],
       "status": "passed",
-      "durationMs": 173
+      "durationMs": 130
     },
     {
       "name": "Automated accessibility audit and local network boundary",
@@ -124,7 +132,7 @@
         "T052"
       ],
       "status": "passed",
-      "durationMs": 187
+      "durationMs": 140
     }
   ],
   "limitations": [

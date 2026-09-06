@@ -257,6 +257,96 @@ try {
     },
   );
   await check(
+    "A concurrent revision preserves unsaved fields and rejects overwriting newer notes",
+    ["T067"],
+    async () => {
+      await open("申请方案 · 初稿");
+      const target = (await records()).find(
+        (r) => r.user.label === "申请方案 · 初稿",
+      );
+      const originalNote = target.user.note;
+      const noteInput = detail().getByLabel("备注", { exact: true });
+      await noteInput.fill("保留的未保存草稿");
+      await command("UI_SET_USER_FIELDS", {
+        recordId: target.recordId,
+        expectedRevision: target.revision,
+        fields: { ...target.user, note: "另一窗口的新备注" },
+      });
+      await app.evaluate(() =>
+        document.dispatchEvent(new Event("visibilitychange")),
+      );
+      await detail()
+        .getByRole("button", { name: "放弃编辑并载入最新记录", exact: true })
+        .waitFor();
+      assert.equal(await noteInput.inputValue(), "保留的未保存草稿");
+      await detail()
+        .getByRole("button", { name: "保存自定义信息", exact: true })
+        .click();
+      await until(
+        async () =>
+          await detail()
+            .getByRole("button", { name: "保存自定义信息", exact: true })
+            .isEnabled(),
+      );
+      assert.equal(
+        (await records()).find((r) => r.recordId === target.recordId).user.note,
+        "另一窗口的新备注",
+      );
+      assert.equal(await noteInput.inputValue(), "保留的未保存草稿");
+      await detail()
+        .getByRole("button", { name: "放弃编辑并载入最新记录", exact: true })
+        .click();
+      assert.equal(await noteInput.inputValue(), "另一窗口的新备注");
+      await noteInput.fill(originalNote);
+      await detail()
+        .getByLabel("网页提交", { exact: true })
+        .selectOption("user_reported_failed");
+      await detail()
+        .getByRole("button", { name: "保存自定义信息", exact: true })
+        .click();
+      await until(
+        async () =>
+          await detail()
+            .getByRole("button", { name: "保存自定义信息", exact: true })
+            .isEnabled(),
+      );
+      assert.equal(
+        (await records()).find((r) => r.recordId === target.recordId).user.note,
+        originalNote,
+      );
+      assert.equal(
+        await detail().getByLabel("网页提交", { exact: true }).inputValue(),
+        "user_reported_failed",
+      );
+      await detail()
+        .getByRole("button", { name: "保存提交状态", exact: true })
+        .click();
+      await until(
+        async () =>
+          !(await detail()
+            .getByLabel("网页提交", { exact: true })
+            .isDisabled()),
+      );
+      assert.equal(
+        (await records()).find((r) => r.recordId === target.recordId).submission
+          .state,
+        "user_reported_failed",
+      );
+      await detail()
+        .getByLabel("网页提交", { exact: true })
+        .selectOption("user_confirmed");
+      await detail()
+        .getByRole("button", { name: "保存提交状态", exact: true })
+        .click();
+      await until(
+        async () =>
+          !(await detail()
+            .getByLabel("网页提交", { exact: true })
+            .isDisabled()),
+      );
+    },
+  );
+  await check(
     "Text comparison shows deterministic edits and supports current file",
     ["T044", "T045"],
     async () => {
@@ -470,7 +560,16 @@ try {
         .getByRole("button", { name: "Settings", exact: true })
         .waitFor();
       await click("Library");
-      await until(async () => (await app.locator(".live-region").innerText()) === "");
+      await until(
+        async () => (await app.locator(".live-region").innerText()) === "",
+      );
+      const columns = await app
+        .locator(".library-layout")
+        .evaluate((el) => ({
+          layout: el.getBoundingClientRect().width,
+          pane: el.querySelector(".library-pane").getBoundingClientRect().width,
+        }));
+      assert.ok(Math.abs(columns.layout - columns.pane) < 2);
       await app.screenshot({
         path: resolve(out, "08-dark-english.png"),
         fullPage: true,

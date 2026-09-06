@@ -427,6 +427,9 @@ input[type="checkbox"] {
   border-radius: 13px;
   overflow: hidden;
 }
+.library-pane:only-child {
+  grid-column: 1 / -1;
+}
 .search-row {
   display: flex;
   gap: 9px;
