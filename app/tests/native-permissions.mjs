@@ -23,7 +23,7 @@ const worker =
 const id = new URL(worker.url()).host;
 const page = await context.newPage();
 await page.goto(`chrome-extension://${id}/app.html#/sites`);
-await page.getByRole("checkbox", { name: "我了解本地明文存储范围" }).check();
+await page.getByRole("checkbox", { name: "我了解文件与备份未加密" }).check();
 await page.getByRole("button", { name: "进入资料库", exact: true }).click();
 await page
   .getByLabel("网站地址", { exact: true })

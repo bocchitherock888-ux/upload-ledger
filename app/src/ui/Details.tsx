@@ -358,7 +358,6 @@ export function Detail({
     <aside className="detail-panel" aria-label={t("details")}>
       <div className="detail-heading">
         <div>
-          <span className="kicker">{t("details")}</span>
           <h2>
             <bdi>{record.user.label || record.file.name}</bdi>
           </h2>
@@ -460,7 +459,6 @@ export function Detail({
             </option>
           ))}
         </select>
-        <p className="hint">{t("submissionDisclaimer")}</p>
         <button
           disabled={busy || submission === record.submission.state}
           onClick={() =>
@@ -630,7 +628,6 @@ export function Detail({
         </dl>
       </section>
       <section className="danger-zone">
-        <h3>{t("danger")}</h3>
         <button className="danger-button" onClick={onDelete}>
           <Trash2 size={17} />
           {t("deleteSelected")}

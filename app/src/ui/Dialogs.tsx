@@ -113,7 +113,6 @@ export function ManualDialog({
           onChange={(event) => setTitle(event.target.value)}
         />
       </label>
-      <p className="hint">{t("manualHint")}</p>
       {error && (
         <div className="alert error" role="alert">
           {error}

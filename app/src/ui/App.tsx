@@ -326,16 +326,6 @@ export function App() {
             </button>
           ))}
         </nav>
-        <div className="rail-foot">
-          <span>
-            <ShieldCheck size={15} />
-            {t("local")}
-          </span>
-          <small>
-            {data.usage.recordCount} {t("records")} ·{" "}
-            {humanSize(data.usage.chargedBytes)}
-          </small>
-        </div>
       </aside>
       <main className="workspace">
         <header className="topbar">
@@ -407,14 +397,7 @@ export function App() {
           <>
             <div className="library-heading">
               <div>
-                <span className="kicker">
-                  {t("appEnglish")} / {t("library")}
-                </span>
                 <h1>{t("library")}</h1>
-              </div>
-              <div className="heading-metric">
-                <b>{data.usage.recordCount}</b>
-                <span>{t("records")}</span>
               </div>
             </div>
             <div className="library-layout">

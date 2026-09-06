@@ -157,7 +157,7 @@ try {
       });
       await h.app.reload();
       await h.app
-        .getByRole("checkbox", { name: "我了解本地明文存储范围" })
+        .getByRole("checkbox", { name: "我了解文件与备份未加密" })
         .check();
       await h.app
         .getByRole("button", { name: "进入资料库", exact: true })

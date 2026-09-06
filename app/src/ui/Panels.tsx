@@ -112,9 +112,7 @@ export function BackupPanel({
     <div className="section-stack">
       <div className="page-heading">
         <div>
-          <span className="kicker">{t("backup")}</span>
           <h1>{t("backupHeading")}</h1>
-          <p>{t("backupPlain")}</p>
         </div>
         <Archive size={34} />
       </div>
@@ -146,8 +144,7 @@ export function BackupPanel({
         <div className="card-heading">
           <div>
             <h2>{t("importTitle")}</h2>
-            <p>{t("backupPlain")}</p>
-          </div>
+            </div>
         </div>
         <label className="file-drop compact">
           <FolderOpen size={25} />
@@ -314,9 +311,7 @@ export function SitesPanel({
     <div className="section-stack">
       <div className="page-heading">
         <div>
-          <span className="kicker">{t("sites")}</span>
           <h1>{t("siteHeading")}</h1>
-          <p>{t("siteIntro")}</p>
         </div>
         <Globe2 size={34} />
       </div>
@@ -524,7 +519,6 @@ export function SettingsPanel({
     <div className="section-stack">
       <div className="page-heading">
         <div>
-          <span className="kicker">{t("settings")}</span>
           <h1>{t("settingsHeading")}</h1>
         </div>
         <SettingsIcon size={34} />

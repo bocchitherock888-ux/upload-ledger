@@ -158,7 +158,7 @@ export function Popup() {
           <span>{error}</span>
         </div>
       )}
-      <p className="popup-explain">{t("enableExplain")}</p>
+      {!site?.enabled && source && <p className="popup-explain">{t("enableExplain")}</p>}
       <button
         className="primary full"
         disabled={busy || !source || !data}
@@ -256,10 +256,6 @@ export function Popup() {
         {data?.runtime.paused ? <Play size={17} /> : <Pause size={17} />}{" "}
         {data?.runtime.paused ? t("resume") : t("pause")}
       </button>
-      <p className="popup-local">
-        <ShieldCheck size={14} />
-        {t("local")}
-      </p>
     </main>
   );
 }

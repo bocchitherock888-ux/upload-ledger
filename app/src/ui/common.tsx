@@ -280,17 +280,9 @@ export function Onboarding({
     <div className="onboarding">
       <section>
         <Brand />
-        <div className="onboarding-mark">✓</div>
         <h1>{t("onboardingTitle")}</h1>
         <p className="lead">{t("onboardingBody")}</p>
-        <div className="boundary">
-          <span>▣</span>
-          <p>{t("onboardingPlain")}</p>
-        </div>
-        <div className="boundary">
-          <span>◎</span>
-          <p>{t("onboardingBoundary")}</p>
-        </div>
+        <p className="hint">{t("onboardingPlain")}</p>
         <label className="check-row">
           <input
             type="checkbox"

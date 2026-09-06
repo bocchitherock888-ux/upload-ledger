@@ -35,5 +35,5 @@ jobs:
             app/output/**/results.json
             app/output/ui-browser/accessibility.json
             app/output/ui-browser/independent-archive-validation.txt
-            deliverables/UploadLedger-1.0.0.zip
+            deliverables/UploadLedger-*.zip
             deliverables/SHA256SUMS.txt

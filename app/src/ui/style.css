@@ -1259,8 +1259,7 @@ input[type="checkbox"] {
   display: grid;
   place-items: center;
   padding: 30px;
-  background:
-    radial-gradient(circle at 20% 15%, #e0eee4, transparent 35%), var(--canvas);
+  background: var(--canvas);
 }
 .onboarding > section {
   width: min(600px, 100%);

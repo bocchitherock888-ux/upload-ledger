@@ -18,7 +18,7 @@ const open = async (name) => {
 const detail = () => app.locator(".detail-panel");
 const hash = (bytes) => createHash("sha256").update(bytes).digest("hex");
 const onboard = async (page) => {
-  await page.getByRole("checkbox", { name: "我了解本地明文存储范围" }).check();
+  await page.getByRole("checkbox", { name: "我了解文件与备份未加密" }).check();
   await page.getByRole("button", { name: "进入资料库", exact: true }).click();
   await page.getByRole("button", { name: "网站权限", exact: true }).waitFor();
 };
