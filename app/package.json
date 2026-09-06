@@ -1,6 +1,6 @@
 {
   "name": "upload-ledger",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": true,
   "type": "module",
   "scripts": {
@@ -33,5 +33,6 @@
     "tsx": "4.23.13",
     "typescript": "7.0.2",
     "vite": "8.2.2"
-  }
+  },
+  "author": "醉步羊 (Tipram)"
 }

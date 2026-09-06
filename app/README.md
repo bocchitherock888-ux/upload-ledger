@@ -49,4 +49,6 @@ npm test
 
 ## 许可与反馈
 
+作者：**醉步羊**（Tipram）。
+
 [MIT](LICENSE) · [第三方许可](THIRD_PARTY_NOTICES.md) · [反馈问题](https://github.com/bocchitherock888-ux/upload-ledger/issues)
