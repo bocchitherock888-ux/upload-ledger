@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "留底 · Upload Ledger",
+  "version": "0.1.0",
+  "minimum_chrome_version": "120",
+  "description": "在你启用的网站，保存所选附件的本地副本，按页面和时间回查版本。",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "unlimitedStorage",
+    "alarms"
+  ],
+  "optional_host_permissions": [
+    "https://*/*",
+    "http://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "留底",
+    "default_popup": "popup.html"
+  },
+  "options_ui": {
+    "page": "app.html#/settings",
+    "open_in_tab": true
+  },
+  "incognito": "not_allowed",
+  "content_security_policy": {
+    "extension_pages": "default-src 'self'; script-src 'self'; worker-src 'self'; style-src 'self'; img-src 'self' blob: data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; frame-ancestors 'none'"
+  }
+}

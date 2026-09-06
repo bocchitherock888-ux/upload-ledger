@@ -1,0 +1,170 @@
+{
+  "startedAt": "2026-09-06T09:02:05.196Z",
+  "results": [
+    {
+      "name": "Fresh installation captures nothing",
+      "ids": [
+        "T001"
+      ],
+      "status": "passed",
+      "durationMs": 372
+    },
+    {
+      "name": "Enable exact origin injects immediately into already open page",
+      "ids": [
+        "T002",
+        "T062"
+      ],
+      "status": "passed",
+      "durationMs": 838
+    },
+    {
+      "name": "Trusted capture preserves website raw upload digest and unknown submission",
+      "ids": [
+        "T009",
+        "T055",
+        "T056"
+      ],
+      "status": "passed",
+      "durationMs": 177
+    },
+    {
+      "name": "Multiple, hidden, dynamic, immediate reset and removal inputs",
+      "ids": [
+        "T003",
+        "T004"
+      ],
+      "status": "passed",
+      "durationMs": 599
+    },
+    {
+      "name": "Zero bytes, exact chunk and final partial chunk",
+      "ids": [
+        "T058"
+      ],
+      "status": "passed",
+      "durationMs": 353
+    },
+    {
+      "name": "Same-name versions remain distinct; alias deduplicates bytes",
+      "ids": [
+        "T005",
+        "T006"
+      ],
+      "status": "passed",
+      "durationMs": 355
+    },
+    {
+      "name": "Synthetic input and sensitive names persist no data",
+      "ids": [
+        "T056",
+        "T071"
+      ],
+      "status": "passed",
+      "durationMs": 2450
+    },
+    {
+      "name": "SPA context removes token and uses selection-time route",
+      "ids": [
+        "T039",
+        "T040"
+      ],
+      "status": "passed",
+      "durationMs": 248
+    },
+    {
+      "name": "Open shadow capture and iframe isolation",
+      "ids": [
+        "T019"
+      ],
+      "status": "passed",
+      "durationMs": 542
+    },
+    {
+      "name": "Trusted native drag protocol obeys opt-in and leaves website handler working",
+      "ids": [
+        "T017",
+        "T018"
+      ],
+      "status": "passed",
+      "durationMs": 950
+    },
+    {
+      "name": "Paused capture stops while user status and manual capture remain available",
+      "ids": [
+        "T008",
+        "T010",
+        "T022",
+        "T047",
+        "T067"
+      ],
+      "status": "passed",
+      "durationMs": 403
+    },
+    {
+      "name": "Real worker termination during 50 MiB copy resumes without duplicate bytes",
+      "ids": [
+        "T012",
+        "T054"
+      ],
+      "status": "passed",
+      "durationMs": 10616,
+      "details": {
+        "bytes": 52428800,
+        "durationMs": 10570,
+        "sha256": "865aa0be402cdb561137490b3168287b4c6ac42f891a8dd0f3a176c9825b1294",
+        "performanceTargetMs": 15000,
+        "faultInjection": true
+      }
+    },
+    {
+      "name": "Site revoke during capture aborts pending data and preserves prior ready records",
+      "ids": [
+        "T007"
+      ],
+      "status": "passed",
+      "durationMs": 157
+    },
+    {
+      "name": "Preview lease blocks deletion; ending it permits reference-safe deletion",
+      "ids": [
+        "T035",
+        "T036"
+      ],
+      "status": "passed",
+      "durationMs": 15
+    },
+    {
+      "name": "Diagnostics contain technical counts without user metadata",
+      "ids": [
+        "T033"
+      ],
+      "status": "passed",
+      "durationMs": 4
+    },
+    {
+      "name": "Clear challenge invalidates old epoch and removes all local data",
+      "ids": [
+        "T038",
+        "T059"
+      ],
+      "status": "passed",
+      "durationMs": 23
+    },
+    {
+      "name": "Extension contexts made no external network requests",
+      "ids": [
+        "T034"
+      ],
+      "status": "passed",
+      "durationMs": 0
+    }
+  ],
+  "limitations": [
+    "Only the copied test manifest pregrants loopback host permission; native prompt verification is recorded separately."
+  ],
+  "browser": "153.0.8010.12",
+  "status": "passed",
+  "pageErrors": [],
+  "externalRequests": []
+}

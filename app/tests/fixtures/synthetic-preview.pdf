@@ -1,0 +1,43 @@
+%PDF-1.7
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R /OpenAction << /S /JavaScript /JS (globalThis.__UL_PDF_RAN=true;) >> >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 2 /Kids [5 0 R 7 0 R] >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Length 133 >>
+stream
+BT /F1 22 Tf 50 740 Td (Upload Ledger - synthetic page 1) Tj 0 -40 Td /F1 12 Tf (Local PDF preview and offline rendering test.) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 4 0 R >>
+endobj
+6 0 obj
+<< /Length 133 >>
+stream
+BT /F1 22 Tf 50 740 Td (Upload Ledger - synthetic page 2) Tj 0 -40 Td /F1 12 Tf (Local PDF preview and offline rendering test.) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 6 0 R >>
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000009 00000 n 
+0000000127 00000 n 
+0000000190 00000 n 
+0000000260 00000 n 
+0000000444 00000 n 
+0000000570 00000 n 
+0000000754 00000 n 
+trailer
+<< /Size 8 /Root 1 0 R >>
+startxref
+880
+%%EOF

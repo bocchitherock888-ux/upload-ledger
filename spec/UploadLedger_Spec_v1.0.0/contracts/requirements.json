@@ -1,0 +1,396 @@
+{
+  "specVersion": "1.0.0",
+  "requirements": [
+    {
+      "id": "REQ-001",
+      "title": "空白授权起点",
+      "acceptance": "新装后任何网站均无自动采集",
+      "priority": "P0",
+      "tests": [
+        "T001"
+      ]
+    },
+    {
+      "id": "REQ-002",
+      "title": "按站点启用与撤销",
+      "acceptance": "当前站点用户授权后生效；撤销后新块被拒绝",
+      "priority": "P0",
+      "tests": [
+        "T002",
+        "T007",
+        "T062"
+      ]
+    },
+    {
+      "id": "REQ-003",
+      "title": "标准 input 捕获",
+      "acceptance": "顶层普通、动态、隐藏 input 可捕获真实选择",
+      "priority": "P0",
+      "tests": [
+        "T003",
+        "T004",
+        "T019",
+        "T056"
+      ]
+    },
+    {
+      "id": "REQ-004",
+      "title": "不干扰网页",
+      "acceptance": "网站拿到的文件、事件与上传结果保持原行为",
+      "priority": "P0",
+      "tests": [
+        "T004",
+        "T055"
+      ]
+    },
+    {
+      "id": "REQ-005",
+      "title": "原件快照",
+      "acceptance": "保存并下载后字节/长度/SHA-256 相同",
+      "priority": "P0",
+      "tests": [
+        "T003",
+        "T011",
+        "T016",
+        "T032",
+        "T054",
+        "T058"
+      ]
+    },
+    {
+      "id": "REQ-006",
+      "title": "同名多版本",
+      "acceptance": "同名改内容后形成两条记录和两个对象",
+      "priority": "P0",
+      "tests": [
+        "T005"
+      ]
+    },
+    {
+      "id": "REQ-007",
+      "title": "内容去重",
+      "acceptance": "相同字节多次选择形成多记录、单对象",
+      "priority": "P0",
+      "tests": [
+        "T006",
+        "T018"
+      ]
+    },
+    {
+      "id": "REQ-008",
+      "title": "独立状态",
+      "acceptance": "选中/副本状态/用户提交状态分别记录",
+      "priority": "P0",
+      "tests": [
+        "T008",
+        "T009",
+        "T010",
+        "T022",
+        "T060"
+      ]
+    },
+    {
+      "id": "REQ-009",
+      "title": "崩溃恢复",
+      "acceptance": "worker 重启后由持久进度恢复或明确中断",
+      "priority": "P0",
+      "tests": [
+        "T011",
+        "T012",
+        "T013"
+      ]
+    },
+    {
+      "id": "REQ-010",
+      "title": "权限最小化",
+      "acceptance": "manifest 与基线一致；没有广泛静态注入",
+      "priority": "P0",
+      "tests": [
+        "T001",
+        "T034",
+        "T066",
+        "T072"
+      ]
+    },
+    {
+      "id": "REQ-011",
+      "title": "本地与明文说明",
+      "acceptance": "核心零外发；引导公开本地明文边界",
+      "priority": "P0",
+      "tests": [
+        "T034",
+        "T072"
+      ]
+    },
+    {
+      "id": "REQ-012",
+      "title": "失败与上限",
+      "acceptance": "超限、磁盘不足、读取失败有具体状态",
+      "priority": "P0",
+      "tests": [
+        "T013",
+        "T014",
+        "T015",
+        "T016",
+        "T029",
+        "T046"
+      ]
+    },
+    {
+      "id": "REQ-013",
+      "title": "隐私字段约束",
+      "acceptance": "查询/片段移除；绝对路径/页面正文无存储",
+      "priority": "P0",
+      "tests": [
+        "T039",
+        "T040",
+        "T063"
+      ]
+    },
+    {
+      "id": "REQ-014",
+      "title": "安全消息边界",
+      "acceptance": "网页无法读取、删除、导出历史资料",
+      "priority": "P0",
+      "tests": [
+        "T007",
+        "T020",
+        "T021",
+        "T022",
+        "T029",
+        "T056",
+        "T062"
+      ]
+    },
+    {
+      "id": "REQ-015",
+      "title": "暂停与清除",
+      "acceptance": "全局暂停即时生效；清除流程可核验",
+      "priority": "P0",
+      "tests": [
+        "T008",
+        "T038",
+        "T059"
+      ]
+    },
+    {
+      "id": "REQ-016",
+      "title": "基础管理页",
+      "acceptance": "最新记录、详情、回取、打开来源、手动状态",
+      "priority": "P0",
+      "tests": [
+        "T003"
+      ]
+    },
+    {
+      "id": "REQ-017",
+      "title": "拖放可选捕获",
+      "acceptance": "站点显式启用；真实 drop 保存，假事件忽略",
+      "priority": "P1",
+      "tests": [
+        "T017",
+        "T018"
+      ]
+    },
+    {
+      "id": "REQ-018",
+      "title": "手动留底",
+      "acceptance": "由扩展页选文件并可填来源，显示「手动留底」",
+      "priority": "P1",
+      "tests": [
+        "T047"
+      ]
+    },
+    {
+      "id": "REQ-019",
+      "title": "搜索与筛选",
+      "acceptance": "文件名/标题/备注/标签；站点/日期/状态筛选",
+      "priority": "P1",
+      "tests": [
+        "T041",
+        "T042",
+        "T054",
+        "T060"
+      ]
+    },
+    {
+      "id": "REQ-020",
+      "title": "安全预览",
+      "acceptance": "文本、常见图片、PDF；其他类型提供原件下载",
+      "priority": "P1",
+      "tests": [
+        "T023",
+        "T024",
+        "T025",
+        "T032",
+        "T034",
+        "T043"
+      ]
+    },
+    {
+      "id": "REQ-021",
+      "title": "文件比较",
+      "acceptance": "哈希/大小/日期对照；UTF-8 小文本逐行比较",
+      "priority": "P1",
+      "tests": [
+        "T044",
+        "T045"
+      ]
+    },
+    {
+      "id": "REQ-022",
+      "title": "标签与备注",
+      "acceptance": "可修改展示字段，原始名称和字节保持原样",
+      "priority": "P1",
+      "tests": [
+        "T067"
+      ]
+    },
+    {
+      "id": "REQ-023",
+      "title": "独立记录删除",
+      "acceptance": "删除一条保留其他引用，最后引用释放对象",
+      "priority": "P1",
+      "tests": [
+        "T036",
+        "T037",
+        "T038"
+      ]
+    },
+    {
+      "id": "REQ-024",
+      "title": "容量管理",
+      "acceptance": "已用、预留、上限、清理建议；禁止自动删旧原件",
+      "priority": "P1",
+      "tests": [
+        "T015",
+        "T070"
+      ]
+    },
+    {
+      "id": "REQ-025",
+      "title": "备份导出",
+      "acceptance": "固定格式、完整对象、manifest、哈希；可独立校验",
+      "priority": "P1",
+      "tests": [
+        "T026",
+        "T048",
+        "T049",
+        "T063",
+        "T069"
+      ]
+    },
+    {
+      "id": "REQ-026",
+      "title": "备份导入",
+      "acceptance": "校验、幂等、冲突可见、失败回滚、发布原子性",
+      "priority": "P1",
+      "tests": [
+        "T026",
+        "T027",
+        "T030",
+        "T031",
+        "T048",
+        "T064"
+      ]
+    },
+    {
+      "id": "REQ-027",
+      "title": "数据迁移",
+      "acceptance": "schema 升级测试；失败保留原数据",
+      "priority": "P1",
+      "tests": [
+        "T050",
+        "T065"
+      ]
+    },
+    {
+      "id": "REQ-028",
+      "title": "无障碍与双语",
+      "acceptance": "键盘完整可用；状态文本与焦点可感知",
+      "priority": "P1",
+      "tests": [
+        "T052",
+        "T053"
+      ]
+    },
+    {
+      "id": "REQ-029",
+      "title": "诊断",
+      "acceptance": "只导出脱敏技术信息；无正文/URL/文件名",
+      "priority": "P1",
+      "tests": [
+        "T033"
+      ]
+    },
+    {
+      "id": "REQ-030",
+      "title": "发布交付",
+      "acceptance": "可安装产物、实际测试报告、隐私与限制说明",
+      "priority": "P1",
+      "tests": [
+        "T061",
+        "T066"
+      ]
+    },
+    {
+      "id": "REQ-031",
+      "title": "下载前完整性",
+      "acceptance": "重新验算对象；损坏时显示 corrupt 并保留记录",
+      "priority": "P1",
+      "tests": [
+        "T028"
+      ]
+    },
+    {
+      "id": "REQ-032",
+      "title": "受限文件与目录",
+      "acceptance": "排除规则只处理用户本次选择；目录上传明确跳过",
+      "priority": "P1",
+      "tests": [
+        "T057",
+        "T071"
+      ]
+    },
+    {
+      "id": "REQ-033",
+      "title": "导出使用锁",
+      "acceptance": "预览/导出期间防止目标被清除；取消后释放",
+      "priority": "P1",
+      "tests": [
+        "T035"
+      ]
+    },
+    {
+      "id": "REQ-034",
+      "title": "更新与卸载说明",
+      "acceptance": "数据留存与卸载风险说明、可用备份入口",
+      "priority": "P1",
+      "tests": [
+        "T051",
+        "T065"
+      ]
+    },
+    {
+      "id": "REQ-035",
+      "title": "缺失来源的说明",
+      "acceptance": "清洗后的链接可能只能回到站点；用户可手动补充",
+      "priority": "P1",
+      "tests": [
+        "T039",
+        "T040",
+        "T068"
+      ]
+    },
+    {
+      "id": "REQ-036",
+      "title": "真实兼容性登记",
+      "acceptance": "未测网站标为未验证，记录版本与操作路径",
+      "priority": "P1",
+      "tests": [
+        "T019",
+        "T061"
+      ]
+    }
+  ]
+}

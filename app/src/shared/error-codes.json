@@ -1,0 +1,324 @@
+[
+  {
+    "code": "E_UNAUTHORISED",
+    "messageKey": "error.E_UNAUTHORISED",
+    "zh-CN": "无权执行此操作",
+    "en-GB": "This action is not authorised",
+    "retryable": false
+  },
+  {
+    "code": "E_SITE_DISABLED",
+    "messageKey": "error.E_SITE_DISABLED",
+    "zh-CN": "此站点尚未启用留底",
+    "en-GB": "Saving is disabled for this site",
+    "retryable": false
+  },
+  {
+    "code": "E_PAUSED",
+    "messageKey": "error.E_PAUSED",
+    "zh-CN": "留底已暂停",
+    "en-GB": "Saving is paused",
+    "retryable": false
+  },
+  {
+    "code": "E_PERMISSION_REVOKED",
+    "messageKey": "error.E_PERMISSION_REVOKED",
+    "zh-CN": "站点权限已撤销",
+    "en-GB": "Site permission was revoked",
+    "retryable": false
+  },
+  {
+    "code": "E_UNSUPPORTED_CONTEXT",
+    "messageKey": "error.E_UNSUPPORTED_CONTEXT",
+    "zh-CN": "此页面或控件暂不支持自动留底",
+    "en-GB": "Automatic capture is unavailable here",
+    "retryable": false
+  },
+  {
+    "code": "E_BAD_MESSAGE",
+    "messageKey": "error.E_BAD_MESSAGE",
+    "zh-CN": "消息格式无效",
+    "en-GB": "Invalid message format",
+    "retryable": false
+  },
+  {
+    "code": "E_MESSAGE_TOO_LARGE",
+    "messageKey": "error.E_MESSAGE_TOO_LARGE",
+    "zh-CN": "消息超过大小限制",
+    "en-GB": "Message size limit exceeded",
+    "retryable": false
+  },
+  {
+    "code": "E_FILE_TOO_LARGE",
+    "messageKey": "error.E_FILE_TOO_LARGE",
+    "zh-CN": "文件超过副本大小上限",
+    "en-GB": "File exceeds the copy size limit",
+    "retryable": false
+  },
+  {
+    "code": "E_BATCH_LIMIT",
+    "messageKey": "error.E_BATCH_LIMIT",
+    "zh-CN": "本批文件数量或总大小超过上限",
+    "en-GB": "Batch size or file count limit exceeded",
+    "retryable": false
+  },
+  {
+    "code": "E_EXCLUDED_FILE",
+    "messageKey": "error.E_EXCLUDED_FILE",
+    "zh-CN": "已按文件排除规则跳过",
+    "en-GB": "Skipped by the file exclusion rule",
+    "retryable": false
+  },
+  {
+    "code": "E_DIRECTORY_UNSUPPORTED",
+    "messageKey": "error.E_DIRECTORY_UNSUPPORTED",
+    "zh-CN": "目录上传请改为选择单独文件",
+    "en-GB": "Select individual files for this upload",
+    "retryable": false
+  },
+  {
+    "code": "E_BUDGET_EXCEEDED",
+    "messageKey": "error.E_BUDGET_EXCEEDED",
+    "zh-CN": "本地资料库容量不足",
+    "en-GB": "Local library budget exceeded",
+    "retryable": false
+  },
+  {
+    "code": "E_STORAGE_WRITE",
+    "messageKey": "error.E_STORAGE_WRITE",
+    "zh-CN": "本地写入失败",
+    "en-GB": "Local storage write failed",
+    "retryable": false
+  },
+  {
+    "code": "E_QUOTA",
+    "messageKey": "error.E_QUOTA",
+    "zh-CN": "浏览器或磁盘可用空间不足",
+    "en-GB": "Browser or disk space is insufficient",
+    "retryable": false
+  },
+  {
+    "code": "E_READ_FAILED",
+    "messageKey": "error.E_READ_FAILED",
+    "zh-CN": "无法读取本次选择的文件",
+    "en-GB": "The selected file could not be read",
+    "retryable": false
+  },
+  {
+    "code": "E_SOURCE_CHANGED",
+    "messageKey": "error.E_SOURCE_CHANGED",
+    "zh-CN": "复制时源文件发生变化",
+    "en-GB": "The source file changed during capture",
+    "retryable": false
+  },
+  {
+    "code": "E_SOURCE_GONE",
+    "messageKey": "error.E_SOURCE_GONE",
+    "zh-CN": "页面已离开，副本保存中断",
+    "en-GB": "The source page closed before capture finished",
+    "retryable": false
+  },
+  {
+    "code": "E_SESSION_EXPIRED",
+    "messageKey": "error.E_SESSION_EXPIRED",
+    "zh-CN": "保存会话已过期，请重新选择文件",
+    "en-GB": "Capture expired; select the file again",
+    "retryable": false
+  },
+  {
+    "code": "E_SESSION_MISMATCH",
+    "messageKey": "error.E_SESSION_MISMATCH",
+    "zh-CN": "保存会话来源不匹配",
+    "en-GB": "Capture session source mismatch",
+    "retryable": false
+  },
+  {
+    "code": "E_CHUNK_ORDER",
+    "messageKey": "error.E_CHUNK_ORDER",
+    "zh-CN": "正在恢复文件传输位置",
+    "en-GB": "Restoring the transfer position",
+    "retryable": true
+  },
+  {
+    "code": "E_CHUNK_CONFLICT",
+    "messageKey": "error.E_CHUNK_CONFLICT",
+    "zh-CN": "重复文件块内容不一致",
+    "en-GB": "Conflicting duplicate chunk",
+    "retryable": false
+  },
+  {
+    "code": "E_CHUNK_HASH",
+    "messageKey": "error.E_CHUNK_HASH",
+    "zh-CN": "文件块校验失败",
+    "en-GB": "Chunk integrity check failed",
+    "retryable": true
+  },
+  {
+    "code": "E_HASH_CONFLICT",
+    "messageKey": "error.E_HASH_CONFLICT",
+    "zh-CN": "文件摘要与对象信息冲突",
+    "en-GB": "File hash and object metadata conflict",
+    "retryable": false
+  },
+  {
+    "code": "E_ACK_TIMEOUT",
+    "messageKey": "error.E_ACK_TIMEOUT",
+    "zh-CN": "保存确认超时",
+    "en-GB": "Save acknowledgement timed out",
+    "retryable": true
+  },
+  {
+    "code": "E_RATE_LIMIT",
+    "messageKey": "error.E_RATE_LIMIT",
+    "zh-CN": "操作过于频繁，请稍后重试",
+    "en-GB": "Too many operations; retry shortly",
+    "retryable": true
+  },
+  {
+    "code": "E_BUSY",
+    "messageKey": "error.E_BUSY",
+    "zh-CN": "当前保存任务繁忙",
+    "en-GB": "Capture queue is busy",
+    "retryable": true
+  },
+  {
+    "code": "E_OBJECT_MISSING",
+    "messageKey": "error.E_OBJECT_MISSING",
+    "zh-CN": "归档文件内容缺失",
+    "en-GB": "Archived file content is missing",
+    "retryable": false
+  },
+  {
+    "code": "E_INTEGRITY",
+    "messageKey": "error.E_INTEGRITY",
+    "zh-CN": "副本完整性校验失败",
+    "en-GB": "Copy integrity verification failed",
+    "retryable": false
+  },
+  {
+    "code": "E_CONFLICT",
+    "messageKey": "error.E_CONFLICT",
+    "zh-CN": "记录已变化，请刷新后重试",
+    "en-GB": "The record changed; refresh and retry",
+    "retryable": false
+  },
+  {
+    "code": "E_OBJECT_IN_USE",
+    "messageKey": "error.E_OBJECT_IN_USE",
+    "zh-CN": "文件正在预览或导出，请结束任务后重试",
+    "en-GB": "The file is in use by a preview or export",
+    "retryable": true
+  },
+  {
+    "code": "E_CLEARING",
+    "messageKey": "error.E_CLEARING",
+    "zh-CN": "资料库正在清除",
+    "en-GB": "The library is being cleared",
+    "retryable": true
+  },
+  {
+    "code": "E_INVALID_URL",
+    "messageKey": "error.E_INVALID_URL",
+    "zh-CN": "来源地址无效或不受支持",
+    "en-GB": "Invalid or unsupported source address",
+    "retryable": false
+  },
+  {
+    "code": "E_PREVIEW_UNSUPPORTED",
+    "messageKey": "error.E_PREVIEW_UNSUPPORTED",
+    "zh-CN": "此文件可下载原件查看",
+    "en-GB": "Download the original to view this file",
+    "retryable": false
+  },
+  {
+    "code": "E_PREVIEW_LIMIT",
+    "messageKey": "error.E_PREVIEW_LIMIT",
+    "zh-CN": "预览超过大小、页数或像素限制",
+    "en-GB": "Preview size, page or pixel limit exceeded",
+    "retryable": false
+  },
+  {
+    "code": "E_PREVIEW_FAILED",
+    "messageKey": "error.E_PREVIEW_FAILED",
+    "zh-CN": "预览暂不可用，原件仍可下载",
+    "en-GB": "Preview unavailable; the original remains available",
+    "retryable": false
+  },
+  {
+    "code": "E_ARCHIVE_FORMAT",
+    "messageKey": "error.E_ARCHIVE_FORMAT",
+    "zh-CN": "备份格式或版本不受支持",
+    "en-GB": "Unsupported backup format or version",
+    "retryable": false
+  },
+  {
+    "code": "E_ARCHIVE_PATH",
+    "messageKey": "error.E_ARCHIVE_PATH",
+    "zh-CN": "备份包含无效或重复路径",
+    "en-GB": "The backup contains invalid or duplicate paths",
+    "retryable": false
+  },
+  {
+    "code": "E_ARCHIVE_LIMIT",
+    "messageKey": "error.E_ARCHIVE_LIMIT",
+    "zh-CN": "备份超过安全处理上限",
+    "en-GB": "Backup safety limit exceeded",
+    "retryable": false
+  },
+  {
+    "code": "E_ARCHIVE_HASH",
+    "messageKey": "error.E_ARCHIVE_HASH",
+    "zh-CN": "备份文件完整性校验失败",
+    "en-GB": "Backup object integrity check failed",
+    "retryable": false
+  },
+  {
+    "code": "E_ARCHIVE_REFERENCE",
+    "messageKey": "error.E_ARCHIVE_REFERENCE",
+    "zh-CN": "备份中的文件引用不完整",
+    "en-GB": "The backup has invalid object references",
+    "retryable": false
+  },
+  {
+    "code": "E_IMPORT_CONFLICT",
+    "messageKey": "error.E_IMPORT_CONFLICT",
+    "zh-CN": "导入记录与当前资料库存在冲突",
+    "en-GB": "Imported records conflict with the current library",
+    "retryable": false
+  },
+  {
+    "code": "E_IMPORT_CANCELLED",
+    "messageKey": "error.E_IMPORT_CANCELLED",
+    "zh-CN": "导入已取消，原资料保留",
+    "en-GB": "Import cancelled; existing data was preserved",
+    "retryable": false
+  },
+  {
+    "code": "E_SCHEMA_NEWER",
+    "messageKey": "error.E_SCHEMA_NEWER",
+    "zh-CN": "资料库来自更高版本，请先升级扩展",
+    "en-GB": "Upgrade the extension to read this database version",
+    "retryable": false
+  },
+  {
+    "code": "E_MIGRATION_FAILED",
+    "messageKey": "error.E_MIGRATION_FAILED",
+    "zh-CN": "资料库升级失败，旧数据已保留",
+    "en-GB": "Database upgrade failed; existing data was preserved",
+    "retryable": false
+  },
+  {
+    "code": "E_USER_CANCELLED",
+    "messageKey": "error.E_USER_CANCELLED",
+    "zh-CN": "操作已取消",
+    "en-GB": "Operation cancelled",
+    "retryable": false
+  },
+  {
+    "code": "E_VAULT_EPOCH",
+    "messageKey": "error.E_VAULT_EPOCH",
+    "zh-CN": "资料库已重置，请刷新后重新操作",
+    "en-GB": "The library was reset. Refresh before starting a new action.",
+    "retryable": false
+  }
+]

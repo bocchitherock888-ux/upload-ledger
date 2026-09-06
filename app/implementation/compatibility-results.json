@@ -1,0 +1,26 @@
+{
+  "applicationVersion": "1.0.0",
+  "testedAt": "2026-09-06",
+  "browser": "Chromium 153.0.8010.12",
+  "os": "macOS",
+  "sites": [
+    {
+      "site": "local synthetic testkit",
+      "origins": [
+        "http://127.0.0.1:18765",
+        "http://127.0.0.1:18766"
+      ],
+      "status": "passed",
+      "scope": [
+        "standard/hidden/dynamic/reset/removed input",
+        "trusted drop opt-in",
+        "open shadow",
+        "iframe rejection",
+        "exact-port isolation",
+        "raw upload SHA unchanged"
+      ]
+    }
+  ],
+  "realBusinessSites": "not_run",
+  "otherBrowsersAndPlatforms": "not_run"
+}

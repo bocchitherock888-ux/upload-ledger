@@ -1,0 +1,9 @@
+node_modules/
+output/
+dist/
+*.zip
+
+.DS_Store
+
+!tests/fixtures/*.zip
+.codex/

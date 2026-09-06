@@ -1,0 +1,1061 @@
+{
+  "specVersion": "1.0.0",
+  "applicationVersion": "1.0.0",
+  "date": "2026-09-06",
+  "environment": {
+    "os": "macOS",
+    "browser": "Chromium 153.0.8010.12",
+    "node": "24.9.0"
+  },
+  "notice": "Suite counts represent executed assertions. A related test ID does not imply every specified subcase passed. partial and not_run are deliberately retained.",
+  "results": [
+    {
+      "id": "T001",
+      "title": "初装零采集",
+      "status": "passed",
+      "evidence": [
+        {
+          "file": "evidence/core-browser.json",
+          "check": "Fresh installation captures nothing",
+          "result": "passed"
+        }
+      ],
+      "note": "Passed in the documented synthetic test environment."
+    },
+    {
+      "id": "T002",
+      "title": "逐站授权与即时启用",
+      "status": "partial",
+      "evidence": [
+        {
+          "file": "evidence/core-browser.json",
+          "check": "Enable exact origin injects immediately into already open page",
+          "result": "passed"
+        },
+        {
+          "file": "evidence/ui-browser.json",
+          "check": "Denied site permission leaves the site disabled",
+          "result": "passed"
+        },
+        {
+          "file": "evidence/native-permissions.json",
+          "scope": "Native Allow and API revoke. Denial response injected in UI test."
+        }
+      ],
+      "note": "Native denial button not clicked; UI response=false exercised. Native grant/revoke verified."
+    },
+    {
+      "id": "T003",
+      "title": "标准单选多选及详情",
+      "status": "passed",
+      "evidence": [
+        {
+          "file": "evidence/core-browser.json",
+          "check": "Multiple, hidden, dynamic, immediate reset and removal inputs",
+          "result": "passed"
+        }
+      ],
+      "note": "Passed in the documented synthetic test environment."
+    },
+    {
+      "id": "T004",
+      "title": "网页立即清空和移除 input",
+      "status": "passed",
+      "evidence": [
+        {
+          "file": "evidence/core-browser.json",
+          "check": "Multiple, hidden, dynamic, immediate reset and removal inputs",
+          "result": "passed"
+        }
+      ],
+      "note": "Passed in the documented synthetic test environment."
+    },
+    {
+      "id": "T005",
+      "title": "同名文件不同内容",
+      "status": "passed",
+      "evidence": [
+        {
+          "file": "evidence/core-browser.json",
+          "check": "Same-name versions remain distinct; alias deduplicates bytes",
+          "result": "passed"
+        }
+      ],
+      "note": "Passed in the documented synthetic test environment."
+    },
+    {
+      "id": "T006",
+      "title": "同内容多次选择与别名",
+      "status": "passed",
+      "evidence": [
+        {
+          "file": "evidence/core-browser.json",
+          "check": "Same-name versions remain distinct; alias deduplicates bytes",
+          "result": "passed"
+        }
+      ],
+      "note": "Passed in the documented synthetic test environment."
+    },
+    {
+      "id": "T007",
+      "title": "撤销授权中的采集",
+      "status": "passed",
+      "evidence": [
+        {
+          "file": "evidence/core-browser.json",
+          "check": "Site revoke during capture aborts pending data and preserves prior ready records",
+          "result": "passed"
+        }
+      ],
+      "note": "Passed in the documented synthetic test environment."
+    },
+    {
+      "id": "T008",
+      "title": "全局暂停与策略版本",
+      "status": "partial",
+      "evidence": [
+        {
+          "file": "evidence/core-browser.json",
+          "check": "Paused capture stops while user status and manual capture remain available",
+          "result": "passed"
+        }
+      ],
+      "note": "Executed checks cover the scope listed in evidence; additional platform or fault variants remain."
+    },
+    {
+      "id": "T009",
+      "title": "选择后取消网页提交",
+      "status": "passed",
+      "evidence": [
+        {
+          "file": "evidence/core-browser.json",
+          "check": "Trusted capture preserves website raw upload digest and unknown submission",
+          "result": "passed"
+        }
+      ],
+      "note": "Passed in the documented synthetic test environment."
+    },
+    {
+      "id": "T010",
+      "title": "部分确认与批次操作",
+      "status": "partial",
+      "evidence": [
+        {
+          "file": "evidence/core-browser.json",
+          "check": "Paused capture stops while user status and manual capture remain available",
+          "result": "passed"
+        },
+        {
+          "file": "evidence/ui-browser.json",
+          "check": "Editable user fields, submission state, combined search and pinned filters",
+          "result": "passed"
+        }
+      ],
+      "note": "Executed checks cover the scope listed in evidence; additional platform or fault variants remain."
+    },
+    {
+      "id": "T011",
+      "title": "块重试幂等与冲突",
+      "status": "passed",
+      "evidence": [
+        {
+          "file": "evidence/unit-tests.txt",
+          "scope": "Related unit/contract assertions; full browser scenario is not implied."
+        }
+      ],
+      "note": "Passed in the documented synthetic test environment."
+    },
+    {
+      "id": "T012",
+      "title": "worker 中止后恢复",
+      "status": "passed",
+      "evidence": [
+        {
+          "file": "evidence/core-browser.json",
+          "check": "Real worker termination during 50 MiB copy resumes without duplicate bytes",
+          "result": "passed"
+        }
+      ],
+      "note": "Passed in the documented synthetic test environment."
+    },
+    {
+      "id": "T013",
+      "title": "页面离开与缺块",
+      "status": "partial",
+      "evidence": [
+        {
+          "file": "evidence/unit-tests.txt",
+          "scope": "Related unit/contract assertions; full browser scenario is not implied."
+        }
+      ],
+      "note": "Executed checks cover the scope listed in evidence; additional platform or fault variants remain."
+    },
+    {
+      "id": "T014",
+      "title": "文件与批次边界",
+      "status": "partial",
+      "evidence": [
+        {
+          "file": "evidence/performance.json",
+          "check": "50 MiB normal copy and 200 MiB sequential batch preserve every byte",
+          "result": "passed"
+        },
+        {
+          "file": "evidence/performance.json",
+          "check": "Oversized file yields metadata only; directory input is skipped",
+          "result": "passed"
+        }
+      ],
+      "note": "Executed checks cover the scope listed in evidence; additional platform or fault variants remain."
+    },
+    {
+      "id": "T015",
+      "title": "预算耗尽与真实写入失败",
+      "status": "partial",
+      "evidence": [
+        {
+          "file": "evidence/unit-tests.txt",
+          "scope": "Related unit/contract assertions; full browser scenario is not implied."
+        }
+      ],
+      "note": "Executed checks cover the scope listed in evidence; additional platform or fault variants remain."
+    },
+    {
+      "id": "T016",
+      "title": "文件读取失败与变化",
+      "status": "partial",
+      "evidence": [
+        {
+          "file": "evidence/unit-tests.txt",
+          "scope": "Related unit/contract assertions; full browser scenario is not implied."
+        }
+      ],
+      "note": "Executed checks cover the scope listed in evidence; additional platform or fault variants remain."
+    },
+    {
+      "id": "T017",
+      "title": "真实拖放 opt-in",
+      "status": "passed",
+      "evidence": [
+        {
+          "file": "evidence/core-browser.json",
+          "check": "Trusted native drag protocol obeys opt-in and leaves website handler working",
+          "result": "passed"
+        }
+      ],
+      "note": "Passed in the documented synthetic test environment."
+    },
+    {
+      "id": "T018",
+      "title": "drop 随后的 change 去重",
+      "status": "passed",
+      "evidence": [
+        {
+          "file": "evidence/core-browser.json",
+          "check": "Trusted native drag protocol obeys opt-in and leaves website handler working",
+          "result": "passed"
+        }
+      ],
+      "note": "Passed in the documented synthetic test environment."
+    },
+    {
+      "id": "T019",
+      "title": "frame 与 Shadow 边界",
+      "status": "partial",
+      "evidence": [
+        {
+          "file": "evidence/core-browser.json",
+          "check": "Open shadow capture and iframe isolation",
+          "result": "passed"
+        }
+      ],
+      "note": "Executed checks cover the scope listed in evidence; additional platform or fault variants remain."
+    },
+    {
+      "id": "T020",
+      "title": "伪造历史读取命令",
+      "status": "partial",
+      "evidence": [
+        {
+          "file": "evidence/unit-tests.txt",
+          "scope": "Related unit/contract assertions; full browser scenario is not implied."
+        }
+      ],
+      "note": "Executed checks cover the scope listed in evidence; additional platform or fault variants remain."
+    },
+    {
+      "id": "T021",
+      "title": "会话跨文档跨站重放",
+      "status": "partial",
+      "evidence": [
+        {
+          "file": "evidence/unit-tests.txt",
+          "scope": "Related unit/contract assertions; full browser scenario is not implied."
+        }
+      ],
+      "note": "Executed checks cover the scope listed in evidence; additional platform or fault variants remain."
+    },
+    {
+      "id": "T022",
+      "title": "伪造已提交状态",
+      "status": "passed",
+      "evidence": [
+        {
+          "file": "evidence/core-browser.json",
+          "check": "Paused capture stops while user status and manual capture remain available",
+          "result": "passed"
+        },
+        {
+          "file": "evidence/unit-tests.txt",
+          "scope": "Related unit/contract assertions; full browser scenario is not implied."
+        }
+      ],
+      "note": "Passed in the documented synthetic test environment."
+    },
+    {
+      "id": "T023",
+      "title": "文件名标题备注 XSS",
+      "status": "partial",
+      "evidence": [
+        {
+          "file": "evidence/ui-browser.json",
+          "check": "Details preview inert text and download preserves exact original",
+          "result": "passed"
+        }
+      ],
+      "note": "Executed checks cover the scope listed in evidence; additional platform or fault variants remain."
+    },
+    {
+      "id": "T024",
+      "title": "HTML SVG 主动内容预览",
+      "status": "passed",
+      "evidence": [
+        {
+          "file": "evidence/ui-browser.json",
+          "check": "Details preview inert text and download preserves exact original",
+          "result": "passed"
+        }
+      ],
+      "note": "Passed in the documented synthetic test environment."
+    },
+    {
+      "id": "T025",
+      "title": "PDF 渲染安全限制",
+      "status": "partial",
+      "evidence": [
+        {
+          "file": "evidence/ui-browser.json",
+          "check": "Local PDF renderer displays pages offline and bounds 501-page documents",
+          "result": "passed"
+        }
+      ],
+      "note": "Executed checks cover the scope listed in evidence; additional platform or fault variants remain."
+    },
+    {
+      "id": "T026",
+      "title": "ZIP 路径、重名与链接",
+      "status": "partial",
+      "evidence": [
+        {
+          "file": "evidence/unit-tests.txt",
+          "scope": "Related unit/contract assertions; full browser scenario is not implied."
+        }
+      ],
+      "note": "Executed checks cover the scope listed in evidence; additional platform or fault variants remain."
+    },
+    {
+      "id": "T027",
+      "title": "ZIP 输出和数量上限",
+      "status": "partial",
+      "evidence": [
+        {
+          "file": "evidence/unit-tests.txt",
+          "scope": "Related unit/contract assertions; full browser scenario is not implied."
+        }
+      ],
+      "note": "Executed checks cover the scope listed in evidence; additional platform or fault variants remain."
+    },
+    {
+      "id": "T028",
+      "title": "存储损坏发现",
+      "status": "partial",
+      "evidence": [
+        {
+          "file": "evidence/unit-tests.txt",
+          "scope": "Related unit/contract assertions; full browser scenario is not implied."
+        }
+      ],
+      "note": "Executed checks cover the scope listed in evidence; additional platform or fault variants remain."
+    },
+    {
+      "id": "T029",
+      "title": "消息大小与速率",
+      "status": "partial",
+      "evidence": [
+        {
+          "file": "evidence/unit-tests.txt",
+          "scope": "Related unit/contract assertions; full browser scenario is not implied."
+        }
+      ],
+      "note": "Executed checks cover the scope listed in evidence; additional platform or fault variants remain."
+    },
+    {
+      "id": "T030",
+      "title": "坏备份回滚",
+      "status": "passed",
+      "evidence": [
+        {
+          "file": "evidence/ui-browser.json",
+          "check": "Fresh browser profile imports exact metadata and bytes; reimport preserves local edits",
+          "result": "passed"
+        }
+      ],
+      "note": "Passed in the documented synthetic test environment."
+    },
+    {
+      "id": "T031",
+      "title": "重复导入与 ID 冲突",
+      "status": "passed",
+      "evidence": [
+        {
+          "file": "evidence/ui-browser.json",
+          "check": "Fresh browser profile imports exact metadata and bytes; reimport preserves local edits",
+          "result": "passed"
+        },
+        {
+          "file": "evidence/unit-tests.txt",
+          "scope": "Related unit/contract assertions; full browser scenario is not implied."
+        }
+      ],
+      "note": "Passed in the documented synthetic test environment."
+    },
+    {
+      "id": "T032",
+      "title": "原名与下载名安全",
+      "status": "partial",
+      "evidence": [
+        {
+          "file": "evidence/ui-browser.json",
+          "check": "Details preview inert text and download preserves exact original",
+          "result": "passed"
+        }
+      ],
+      "note": "Executed checks cover the scope listed in evidence; additional platform or fault variants remain."
+    },
+    {
+      "id": "T033",
+      "title": "脱敏诊断",
+      "status": "passed",
+      "evidence": [
+        {
+          "file": "evidence/core-browser.json",
+          "check": "Diagnostics contain technical counts without user metadata",
+          "result": "passed"
+        }
+      ],
+      "note": "Passed in the documented synthetic test environment."
+    },
+    {
+      "id": "T034",
+      "title": "CSP 和离线零外发",
+      "status": "passed",
+      "evidence": [
+        {
+          "file": "evidence/core-browser.json",
+          "check": "Extension contexts made no external network requests",
+          "result": "passed"
+        },
+        {
+          "file": "evidence/ui-browser.json",
+          "check": "Local PDF renderer displays pages offline and bounds 501-page documents",
+          "result": "passed"
+        },
+        {
+          "file": "evidence/ui-browser.json",
+          "check": "Automated accessibility audit and local network boundary",
+          "result": "passed"
+        }
+      ],
+      "note": "Passed in the documented synthetic test environment."
+    },
+    {
+      "id": "T035",
+      "title": "预览备份 lease 与删除",
+      "status": "partial",
+      "evidence": [
+        {
+          "file": "evidence/core-browser.json",
+          "check": "Preview lease blocks deletion; ending it permits reference-safe deletion",
+          "result": "passed"
+        },
+        {
+          "file": "evidence/ui-browser.json",
+          "check": "Keyboard modal navigation and explicit deletion preserve other files",
+          "result": "passed"
+        },
+        {
+          "file": "evidence/unit-tests.txt",
+          "scope": "Related unit/contract assertions; full browser scenario is not implied."
+        }
+      ],
+      "note": "Executed checks cover the scope listed in evidence; additional platform or fault variants remain."
+    },
+    {
+      "id": "T036",
+      "title": "删除共享对象引用",
+      "status": "passed",
+      "evidence": [
+        {
+          "file": "evidence/core-browser.json",
+          "check": "Preview lease blocks deletion; ending it permits reference-safe deletion",
+          "result": "passed"
+        },
+        {
+          "file": "evidence/ui-browser.json",
+          "check": "Keyboard modal navigation and explicit deletion preserve other files",
+          "result": "passed"
+        },
+        {
+          "file": "evidence/unit-tests.txt",
+          "scope": "Related unit/contract assertions; full browser scenario is not implied."
+        }
+      ],
+      "note": "Passed in the documented synthetic test environment."
+    },
+    {
+      "id": "T037",
+      "title": "GC 中断恢复",
+      "status": "partial",
+      "evidence": [
+        {
+          "file": "evidence/unit-tests.txt",
+          "scope": "Related unit/contract assertions; full browser scenario is not implied."
+        }
+      ],
+      "note": "Executed checks cover the scope listed in evidence; additional platform or fault variants remain."
+    },
+    {
+      "id": "T038",
+      "title": "清除全部与重启",
+      "status": "passed",
+      "evidence": [
+        {
+          "file": "evidence/core-browser.json",
+          "check": "Clear challenge invalidates old epoch and removes all local data",
+          "result": "passed"
+        },
+        {
+          "file": "evidence/ui-browser.json",
+          "check": "Clear-all UI requires the exact challenge and removes only the test vault",
+          "result": "passed"
+        }
+      ],
+      "note": "Passed in the documented synthetic test environment."
+    },
+    {
+      "id": "T039",
+      "title": "URL 去敏与标题开关",
+      "status": "partial",
+      "evidence": [
+        {
+          "file": "evidence/core-browser.json",
+          "check": "SPA context removes token and uses selection-time route",
+          "result": "passed"
+        },
+        {
+          "file": "evidence/unit-tests.txt",
+          "scope": "Related unit/contract assertions; full browser scenario is not implied."
+        }
+      ],
+      "note": "Executed checks cover the scope listed in evidence; additional platform or fault variants remain."
+    },
+    {
+      "id": "T040",
+      "title": "SPA 页面上下文",
+      "status": "passed",
+      "evidence": [
+        {
+          "file": "evidence/core-browser.json",
+          "check": "SPA context removes token and uses selection-time route",
+          "result": "passed"
+        }
+      ],
+      "note": "Passed in the documented synthetic test environment."
+    },
+    {
+      "id": "T041",
+      "title": "搜索筛选组合",
+      "status": "partial",
+      "evidence": [
+        {
+          "file": "evidence/ui-browser.json",
+          "check": "Editable user fields, submission state, combined search and pinned filters",
+          "result": "passed"
+        },
+        {
+          "file": "evidence/performance.json",
+          "check": "Ten thousand metadata records search and render without loading originals",
+          "result": "passed"
+        }
+      ],
+      "note": "Executed checks cover the scope listed in evidence; additional platform or fault variants remain."
+    },
+    {
+      "id": "T042",
+      "title": "大列表分页与稳定排序",
+      "status": "partial",
+      "evidence": [
+        {
+          "file": "evidence/performance.json",
+          "check": "Ten thousand metadata records search and render without loading originals",
+          "result": "passed"
+        },
+        {
+          "file": "evidence/unit-tests.txt",
+          "scope": "Related unit/contract assertions; full browser scenario is not implied."
+        }
+      ],
+      "note": "Executed checks cover the scope listed in evidence; additional platform or fault variants remain."
+    },
+    {
+      "id": "T043",
+      "title": "文本图片预览上限",
+      "status": "partial",
+      "evidence": [
+        {
+          "file": "evidence/ui-browser.json",
+          "check": "Details preview inert text and download preserves exact original",
+          "result": "passed"
+        },
+        {
+          "file": "evidence/ui-browser.json",
+          "check": "Local PDF renderer displays pages offline and bounds 501-page documents",
+          "result": "passed"
+        },
+        {
+          "file": "evidence/unit-tests.txt",
+          "scope": "Related unit/contract assertions; full browser scenario is not implied."
+        }
+      ],
+      "note": "Executed checks cover the scope listed in evidence; additional platform or fault variants remain."
+    },
+    {
+      "id": "T044",
+      "title": "小文本逐行比较",
+      "status": "passed",
+      "evidence": [
+        {
+          "file": "evidence/ui-browser.json",
+          "check": "Text comparison shows deterministic edits and supports current file",
+          "result": "passed"
+        }
+      ],
+      "note": "Passed in the documented synthetic test environment."
+    },
+    {
+      "id": "T045",
+      "title": "二进制比较",
+      "status": "partial",
+      "evidence": [
+        {
+          "file": "evidence/ui-browser.json",
+          "check": "Text comparison shows deterministic edits and supports current file",
+          "result": "passed"
+        }
+      ],
+      "note": "Executed checks cover the scope listed in evidence; additional platform or fault variants remain."
+    },
+    {
+      "id": "T046",
+      "title": "metadata_only 恢复指引",
+      "status": "partial",
+      "evidence": [
+        {
+          "file": "evidence/performance.json",
+          "check": "Oversized file yields metadata only; directory input is skipped",
+          "result": "passed"
+        }
+      ],
+      "note": "Executed checks cover the scope listed in evidence; additional platform or fault variants remain."
+    },
+    {
+      "id": "T047",
+      "title": "手动留底",
+      "status": "passed",
+      "evidence": [
+        {
+          "file": "evidence/core-browser.json",
+          "check": "Paused capture stops while user status and manual capture remain available",
+          "result": "passed"
+        },
+        {
+          "file": "evidence/ui-browser.json",
+          "check": "Manual UI saves multiple real files with current time and clean source",
+          "result": "passed"
+        }
+      ],
+      "note": "Passed in the documented synthetic test environment."
+    },
+    {
+      "id": "T048",
+      "title": "备份完整往返",
+      "status": "passed",
+      "evidence": [
+        {
+          "file": "evidence/ui-browser.json",
+          "check": "Complete backup through production UI is independently valid",
+          "result": "passed"
+        },
+        {
+          "file": "evidence/ui-browser.json",
+          "check": "Fresh browser profile imports exact metadata and bytes; reimport preserves local edits",
+          "result": "passed"
+        }
+      ],
+      "note": "Passed in the documented synthetic test environment."
+    },
+    {
+      "id": "T049",
+      "title": "导出降级独立分包",
+      "status": "partial",
+      "evidence": [
+        {
+          "file": "evidence/unit-tests.txt",
+          "scope": "Related unit/contract assertions; full browser scenario is not implied."
+        }
+      ],
+      "note": "Executed checks cover the scope listed in evidence; additional platform or fault variants remain."
+    },
+    {
+      "id": "T050",
+      "title": "schema 迁移与失败",
+      "status": "partial",
+      "evidence": [
+        {
+          "file": "evidence/unit-tests.txt",
+          "scope": "Related unit/contract assertions; full browser scenario is not implied."
+        },
+        {
+          "file": "evidence/migration.json",
+          "scope": "Real same-ID v0.1.0 to v1.0.0 successful migration."
+        }
+      ],
+      "note": "Successful upgrade verified. Migration transaction failure injection remains."
+    },
+    {
+      "id": "T051",
+      "title": "卸载与新profile恢复",
+      "status": "partial",
+      "evidence": [
+        {
+          "file": "evidence/ui-browser.json",
+          "check": "Fresh browser profile imports exact metadata and bytes; reimport preserves local edits",
+          "result": "passed"
+        }
+      ],
+      "note": "Executed checks cover the scope listed in evidence; additional platform or fault variants remain."
+    },
+    {
+      "id": "T052",
+      "title": "键盘与辅助技术",
+      "status": "partial",
+      "evidence": [
+        {
+          "file": "evidence/ui-browser.json",
+          "check": "Onboarding requires explicit local plaintext acknowledgement",
+          "result": "passed"
+        },
+        {
+          "file": "evidence/ui-browser.json",
+          "check": "Keyboard modal navigation and explicit deletion preserve other files",
+          "result": "passed"
+        },
+        {
+          "file": "evidence/ui-browser.json",
+          "check": "Chinese and English light/dark layouts fit desktop and narrow windows",
+          "result": "passed"
+        },
+        {
+          "file": "evidence/ui-browser.json",
+          "check": "Automated accessibility audit and local network boundary",
+          "result": "passed"
+        }
+      ],
+      "note": "Tab/Escape/modal focus and axe verified; screen-reader speech remains."
+    },
+    {
+      "id": "T053",
+      "title": "双语与布局",
+      "status": "partial",
+      "evidence": [
+        {
+          "file": "evidence/ui-browser.json",
+          "check": "Chinese and English light/dark layouts fit desktop and narrow windows",
+          "result": "passed"
+        }
+      ],
+      "note": "zh-CN/en-GB, light/dark, 390 px and 380 px layouts verified on Chromium 153."
+    },
+    {
+      "id": "T054",
+      "title": "采集主线程与内存",
+      "status": "partial",
+      "evidence": [
+        {
+          "file": "evidence/core-browser.json",
+          "check": "Real worker termination during 50 MiB copy resumes without duplicate bytes",
+          "result": "passed"
+        },
+        {
+          "file": "evidence/performance.json",
+          "check": "50 MiB normal copy and 200 MiB sequential batch preserve every byte",
+          "result": "passed"
+        }
+      ],
+      "note": "50 MiB 9.6 s and 200 MiB 43.9 s. JS heaps sampled; full RSS and interactive long-task budget unverified."
+    },
+    {
+      "id": "T055",
+      "title": "网站接收摘要不变",
+      "status": "passed",
+      "evidence": [
+        {
+          "file": "evidence/core-browser.json",
+          "check": "Trusted capture preserves website raw upload digest and unknown submission",
+          "result": "passed"
+        }
+      ],
+      "note": "Passed in the documented synthetic test environment."
+    },
+    {
+      "id": "T056",
+      "title": "真实事件和自动化边界",
+      "status": "passed",
+      "evidence": [
+        {
+          "file": "evidence/core-browser.json",
+          "check": "Trusted capture preserves website raw upload digest and unknown submission",
+          "result": "passed"
+        },
+        {
+          "file": "evidence/core-browser.json",
+          "check": "Synthetic input and sensitive names persist no data",
+          "result": "passed"
+        }
+      ],
+      "note": "Passed in the documented synthetic test environment."
+    },
+    {
+      "id": "T057",
+      "title": "目录选择跳过",
+      "status": "passed",
+      "evidence": [
+        {
+          "file": "evidence/performance.json",
+          "check": "Oversized file yields metadata only; directory input is skipped",
+          "result": "passed"
+        }
+      ],
+      "note": "Passed in the documented synthetic test environment."
+    },
+    {
+      "id": "T058",
+      "title": "零字节与分块边界",
+      "status": "passed",
+      "evidence": [
+        {
+          "file": "evidence/core-browser.json",
+          "check": "Zero bytes, exact chunk and final partial chunk",
+          "result": "passed"
+        }
+      ],
+      "note": "Passed in the documented synthetic test environment."
+    },
+    {
+      "id": "T059",
+      "title": "清除后迟到消息",
+      "status": "passed",
+      "evidence": [
+        {
+          "file": "evidence/core-browser.json",
+          "check": "Clear challenge invalidates old epoch and removes all local data",
+          "result": "passed"
+        },
+        {
+          "file": "evidence/ui-browser.json",
+          "check": "Clear-all UI requires the exact challenge and removes only the test vault",
+          "result": "passed"
+        }
+      ],
+      "note": "Passed in the documented synthetic test environment."
+    },
+    {
+      "id": "T060",
+      "title": "时间与时区变化",
+      "status": "partial",
+      "evidence": [
+        {
+          "file": "evidence/unit-tests.txt",
+          "scope": "Related unit/contract assertions; full browser scenario is not implied."
+        }
+      ],
+      "note": "Executed checks cover the scope listed in evidence; additional platform or fault variants remain."
+    },
+    {
+      "id": "T061",
+      "title": "实际站点兼容登记",
+      "status": "not_run",
+      "evidence": [],
+      "note": "Local synthetic site only. Real business sites not exercised."
+    },
+    {
+      "id": "T062",
+      "title": "相同主机不同端口",
+      "status": "passed",
+      "evidence": [
+        {
+          "file": "evidence/core-browser.json",
+          "check": "Enable exact origin injects immediately into already open page",
+          "result": "passed"
+        }
+      ],
+      "note": "Passed in the documented synthetic test environment."
+    },
+    {
+      "id": "T063",
+      "title": "备份不含策略和技术秘密",
+      "status": "passed",
+      "evidence": [
+        {
+          "file": "evidence/ui-browser.json",
+          "check": "Complete backup through production UI is independently valid",
+          "result": "passed"
+        },
+        {
+          "file": "evidence/unit-tests.txt",
+          "scope": "Related unit/contract assertions; full browser scenario is not implied."
+        }
+      ],
+      "note": "Passed in the documented synthetic test environment."
+    },
+    {
+      "id": "T064",
+      "title": "导入中途worker重启",
+      "status": "partial",
+      "evidence": [
+        {
+          "file": "evidence/unit-tests.txt",
+          "scope": "Related unit/contract assertions; full browser scenario is not implied."
+        }
+      ],
+      "note": "Import expiry/cancellation and atomic rollback unit-tested; real worker termination during import remains."
+    },
+    {
+      "id": "T065",
+      "title": "同ID更新保留数据",
+      "status": "passed",
+      "evidence": [
+        {
+          "file": "evidence/migration.json",
+          "scope": "Real same-ID v0.1.0 to v1.0.0 successful migration."
+        }
+      ],
+      "note": "Passed in the documented synthetic test environment."
+    },
+    {
+      "id": "T066",
+      "title": "生产包可重复构建",
+      "status": "passed",
+      "evidence": [
+        {
+          "file": "evidence/package.json",
+          "scope": "Two independent same-environment builds produce identical ZIP bytes; package contents verified."
+        }
+      ],
+      "note": "Passed in the documented synthetic test environment."
+    },
+    {
+      "id": "T067",
+      "title": "用户字段并发修改",
+      "status": "passed",
+      "evidence": [
+        {
+          "file": "evidence/core-browser.json",
+          "check": "Paused capture stops while user status and manual capture remain available",
+          "result": "passed"
+        },
+        {
+          "file": "evidence/ui-browser.json",
+          "check": "Editable user fields, submission state, combined search and pinned filters",
+          "result": "passed"
+        },
+        {
+          "file": "evidence/unit-tests.txt",
+          "scope": "Related unit/contract assertions; full browser scenario is not implied."
+        }
+      ],
+      "note": "Passed in the documented synthetic test environment."
+    },
+    {
+      "id": "T068",
+      "title": "来源失效与净化链接",
+      "status": "not_run",
+      "evidence": [],
+      "note": "Executed checks cover the scope listed in evidence; additional platform or fault variants remain."
+    },
+    {
+      "id": "T069",
+      "title": "导出中取消保存",
+      "status": "partial",
+      "evidence": [
+        {
+          "file": "evidence/ui-browser.json",
+          "check": "Complete backup through production UI is independently valid",
+          "result": "passed"
+        },
+        {
+          "file": "evidence/unit-tests.txt",
+          "scope": "Related unit/contract assertions; full browser scenario is not implied."
+        }
+      ],
+      "note": "Writable abort and failure cleanup unit-tested; native SavePicker cancellation remains."
+    },
+    {
+      "id": "T070",
+      "title": "容量建议与无自动过期",
+      "status": "partial",
+      "evidence": [
+        {
+          "file": "evidence/unit-tests.txt",
+          "scope": "Related unit/contract assertions; full browser scenario is not implied."
+        }
+      ],
+      "note": "Executed checks cover the scope listed in evidence; additional platform or fault variants remain."
+    },
+    {
+      "id": "T071",
+      "title": "敏感文件名跳过",
+      "status": "passed",
+      "evidence": [
+        {
+          "file": "evidence/core-browser.json",
+          "check": "Synthetic input and sensitive names persist no data",
+          "result": "passed"
+        }
+      ],
+      "note": "Passed in the documented synthetic test environment."
+    },
+    {
+      "id": "T072",
+      "title": "无痕与受限页面",
+      "status": "partial",
+      "evidence": [
+        {
+          "file": "evidence/unit-tests.txt",
+          "scope": "Related unit/contract assertions; full browser scenario is not implied."
+        }
+      ],
+      "note": "Executed checks cover the scope listed in evidence; additional platform or fault variants remain."
+    }
+  ]
+}

@@ -1,0 +1,178 @@
+{
+  "format": "upload-ledger-backup",
+  "formatVersion": 1,
+  "archiveId": "5edf44f7-c06e-5d72-9d75-095e5521f084",
+  "createdAt": "2026-09-06T09:00:00.000Z",
+  "appVersion": "0.1.0",
+  "schemaVersion": 1,
+  "records": [
+    {
+      "recordId": "8000dd98-74b7-52aa-bfbf-887da70574be",
+      "batchId": "3b9c63f4-2dd9-5c1e-a972-68f08c62ca02",
+      "observedAt": "2026-09-06T08:01:00.000Z",
+      "source": "standard_input",
+      "page": {
+        "origin": "https://example.test",
+        "location": "https://example.test/apply",
+        "locationMode": "origin_path",
+        "title": "Synthetic application page"
+      },
+      "file": {
+        "name": "proposal.txt",
+        "byteLength": 58,
+        "declaredMime": "text/plain",
+        "lastModified": 1788681600000
+      },
+      "snapshot": {
+        "state": "ready",
+        "objectSha256": "18fa3596e23c95dc6a0fb46dbfa79db0927e9e599ca908205f5056ce875aecae",
+        "capturedAt": "2026-09-06T08:01:00.000Z",
+        "errorCode": null
+      },
+      "submission": {
+        "state": "user_confirmed",
+        "updatedAt": "2026-09-06T08:01:00.000Z"
+      },
+      "user": {
+        "label": null,
+        "note": "Synthetic sample only.",
+        "tags": [
+          "demo"
+        ],
+        "pinned": false
+      },
+      "revision": 1,
+      "importedAt": null
+    },
+    {
+      "recordId": "5ea28908-61ab-5da7-baee-c3228f1e73c4",
+      "batchId": "54d26d5a-07e7-5b0c-bb4b-0dd262afd7dc",
+      "observedAt": "2026-09-06T08:02:00.000Z",
+      "source": "standard_input",
+      "page": {
+        "origin": "https://example.test",
+        "location": "https://example.test/apply",
+        "locationMode": "origin_path",
+        "title": "Synthetic application page"
+      },
+      "file": {
+        "name": "proposal.txt",
+        "byteLength": 58,
+        "declaredMime": "text/plain",
+        "lastModified": 1788681600000
+      },
+      "snapshot": {
+        "state": "ready",
+        "objectSha256": "ae9b12215392b0bd638908ceaad9a0599218ec97fc53042d84ee47a261af3811",
+        "capturedAt": "2026-09-06T08:02:00.000Z",
+        "errorCode": null
+      },
+      "submission": {
+        "state": "unknown",
+        "updatedAt": null
+      },
+      "user": {
+        "label": null,
+        "note": "Synthetic sample only.",
+        "tags": [
+          "demo"
+        ],
+        "pinned": false
+      },
+      "revision": 1,
+      "importedAt": null
+    },
+    {
+      "recordId": "23224398-ac3c-5485-8d12-4549642c727f",
+      "batchId": "1a261c1b-1b44-5b21-a221-b715ab424f02",
+      "observedAt": "2026-09-06T08:03:00.000Z",
+      "source": "standard_input",
+      "page": {
+        "origin": "https://example.test",
+        "location": "https://example.test/apply",
+        "locationMode": "origin_path",
+        "title": "Synthetic application page"
+      },
+      "file": {
+        "name": "proposal-copy.txt",
+        "byteLength": 58,
+        "declaredMime": "text/plain",
+        "lastModified": 1788681600000
+      },
+      "snapshot": {
+        "state": "ready",
+        "objectSha256": "18fa3596e23c95dc6a0fb46dbfa79db0927e9e599ca908205f5056ce875aecae",
+        "capturedAt": "2026-09-06T08:03:00.000Z",
+        "errorCode": null
+      },
+      "submission": {
+        "state": "unknown",
+        "updatedAt": null
+      },
+      "user": {
+        "label": null,
+        "note": "Synthetic sample only.",
+        "tags": [
+          "demo"
+        ],
+        "pinned": false
+      },
+      "revision": 1,
+      "importedAt": null
+    }
+  ],
+  "objects": [
+    {
+      "sha256": "18fa3596e23c95dc6a0fb46dbfa79db0927e9e599ca908205f5056ce875aecae",
+      "byteLength": 58,
+      "path": "objects/18fa3596e23c95dc6a0fb46dbfa79db0927e9e599ca908205f5056ce875aecae.bin"
+    },
+    {
+      "sha256": "ae9b12215392b0bd638908ceaad9a0599218ec97fc53042d84ee47a261af3811",
+      "byteLength": 58,
+      "path": "objects/ae9b12215392b0bd638908ceaad9a0599218ec97fc53042d84ee47a261af3811.bin"
+    }
+  ],
+  "audit": [
+    {
+      "eventId": "fdaff2df-78c9-5664-b361-d1f6e863ac5e",
+      "recordId": "8000dd98-74b7-52aa-bfbf-887da70574be",
+      "createdAt": "2026-09-06T08:01:00.000Z",
+      "actor": "system",
+      "type": "snapshot_saved",
+      "from": "finalising",
+      "to": "ready",
+      "note": null
+    },
+    {
+      "eventId": "097625e7-f88f-5958-961f-dfaebd35b64b",
+      "recordId": "5ea28908-61ab-5da7-baee-c3228f1e73c4",
+      "createdAt": "2026-09-06T08:02:00.000Z",
+      "actor": "system",
+      "type": "snapshot_saved",
+      "from": "finalising",
+      "to": "ready",
+      "note": null
+    },
+    {
+      "eventId": "80812f28-357f-5c68-8484-82b5b5a85952",
+      "recordId": "23224398-ac3c-5485-8d12-4549642c727f",
+      "createdAt": "2026-09-06T08:03:00.000Z",
+      "actor": "system",
+      "type": "snapshot_saved",
+      "from": "finalising",
+      "to": "ready",
+      "note": null
+    },
+    {
+      "eventId": "f0304d9f-9d0b-528e-b0bd-41669bb4f9eb",
+      "recordId": "8000dd98-74b7-52aa-bfbf-887da70574be",
+      "createdAt": "2026-09-06T08:01:00.000Z",
+      "actor": "user",
+      "type": "submission_changed",
+      "from": "unknown",
+      "to": "user_confirmed",
+      "note": null
+    }
+  ]
+}

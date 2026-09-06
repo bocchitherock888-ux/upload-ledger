@@ -1,0 +1,493 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "format": {
+      "const": "upload-ledger-backup"
+    },
+    "formatVersion": {
+      "const": 1
+    },
+    "archiveId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "Z$"
+    },
+    "appVersion": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(?:[-+][0-9A-Za-z.-]+)?$",
+      "maxLength": 100
+    },
+    "schemaVersion": {
+      "const": 1
+    },
+    "records": {
+      "type": "array",
+      "maxItems": 10000,
+      "items": {
+        "$ref": "#/$defs/record"
+      }
+    },
+    "objects": {
+      "type": "array",
+      "maxItems": 10000,
+      "items": {
+        "$ref": "#/$defs/object"
+      }
+    },
+    "audit": {
+      "type": "array",
+      "maxItems": 100000,
+      "items": {
+        "$ref": "#/$defs/audit"
+      }
+    }
+  },
+  "required": [
+    "format",
+    "formatVersion",
+    "archiveId",
+    "createdAt",
+    "appVersion",
+    "schemaVersion",
+    "records",
+    "objects",
+    "audit"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:upload-ledger:archive-manifest:v1",
+  "title": "Upload Ledger backup manifest v1",
+  "$defs": {
+    "record": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "batchId": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "observedAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        },
+        "source": {
+          "enum": [
+            "standard_input",
+            "user_drop",
+            "manual_snapshot"
+          ]
+        },
+        "page": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "origin": {
+                  "type": "string",
+                  "maxLength": 4096,
+                  "pattern": "^https?://"
+                },
+                "location": {
+                  "type": "string",
+                  "maxLength": 4096,
+                  "pattern": "^https?://"
+                },
+                "locationMode": {
+                  "enum": [
+                    "origin_path",
+                    "origin_only"
+                  ]
+                },
+                "title": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "maxLength": 256
+                }
+              },
+              "required": [
+                "origin",
+                "location",
+                "locationMode",
+                "title"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "file": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1024
+            },
+            "byteLength": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "declaredMime": {
+              "type": "string",
+              "maxLength": 255
+            },
+            "lastModified": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 9007199254740991
+            }
+          },
+          "required": [
+            "name",
+            "byteLength",
+            "declaredMime",
+            "lastModified"
+          ]
+        },
+        "snapshot": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "state": {
+              "enum": [
+                "ready",
+                "metadata_only",
+                "interrupted",
+                "failed"
+              ]
+            },
+            "objectSha256": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "capturedAt": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time",
+                  "pattern": "Z$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "errorCode": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 80
+            }
+          },
+          "required": [
+            "state",
+            "objectSha256",
+            "capturedAt",
+            "errorCode"
+          ],
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "state": {
+                    "const": "ready"
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "objectSha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  "capturedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "pattern": "Z$"
+                  },
+                  "errorCode": {
+                    "type": "null"
+                  }
+                }
+              },
+              "else": {
+                "properties": {
+                  "objectSha256": {
+                    "type": "null"
+                  },
+                  "capturedAt": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "submission": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "state": {
+              "enum": [
+                "unknown",
+                "user_confirmed",
+                "user_reported_failed",
+                "user_reported_cancelled"
+              ]
+            },
+            "updatedAt": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time",
+                  "pattern": "Z$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "state",
+            "updatedAt"
+          ]
+        },
+        "user": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "label": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 120
+            },
+            "note": {
+              "type": "string",
+              "maxLength": 4000
+            },
+            "tags": {
+              "type": "array",
+              "maxItems": 10,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 32
+              }
+            },
+            "pinned": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "label",
+            "note",
+            "tags",
+            "pinned"
+          ]
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "importedAt": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "Z$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "recordId",
+        "batchId",
+        "observedAt",
+        "source",
+        "page",
+        "file",
+        "snapshot",
+        "submission",
+        "user",
+        "revision",
+        "importedAt"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "source": {
+                "enum": [
+                  "standard_input",
+                  "user_drop"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "page": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "origin": {
+                    "type": "string",
+                    "maxLength": 4096,
+                    "pattern": "^https?://"
+                  },
+                  "location": {
+                    "type": "string",
+                    "maxLength": 4096,
+                    "pattern": "^https?://"
+                  },
+                  "locationMode": {
+                    "enum": [
+                      "origin_path",
+                      "origin_only"
+                    ]
+                  },
+                  "title": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "maxLength": 256
+                  }
+                },
+                "required": [
+                  "origin",
+                  "location",
+                  "locationMode",
+                  "title"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "object": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "byteLength": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 52428800
+        },
+        "path": {
+          "type": "string",
+          "pattern": "^objects/[0-9a-f]{64}\\.bin$"
+        }
+      },
+      "required": [
+        "sha256",
+        "byteLength",
+        "path"
+      ]
+    },
+    "audit": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "eventId": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "recordId": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        },
+        "actor": {
+          "enum": [
+            "system",
+            "user"
+          ]
+        },
+        "type": {
+          "enum": [
+            "snapshot_saved",
+            "snapshot_failed",
+            "submission_changed",
+            "user_fields_changed",
+            "integrity_failed",
+            "imported"
+          ]
+        },
+        "from": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 80
+        },
+        "to": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 80
+        },
+        "note": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 4000
+        }
+      },
+      "required": [
+        "eventId",
+        "recordId",
+        "createdAt",
+        "actor",
+        "type",
+        "from",
+        "to",
+        "note"
+      ]
+    }
+  }
+}

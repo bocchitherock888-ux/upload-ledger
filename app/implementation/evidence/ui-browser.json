@@ -1,0 +1,137 @@
+{
+  "startedAt": "2026-09-06T09:02:14.572Z",
+  "results": [
+    {
+      "name": "Onboarding requires explicit local plaintext acknowledgement",
+      "ids": [
+        "T052"
+      ],
+      "status": "passed",
+      "durationMs": 364
+    },
+    {
+      "name": "Denied site permission leaves the site disabled",
+      "ids": [
+        "T002"
+      ],
+      "status": "passed",
+      "durationMs": 143,
+      "details": {
+        "permissionResponse": "injected false; native grant and revoke tested separately"
+      }
+    },
+    {
+      "name": "Manual UI saves multiple real files with current time and clean source",
+      "ids": [
+        "T047"
+      ],
+      "status": "passed",
+      "durationMs": 280
+    },
+    {
+      "name": "Details preview inert text and download preserves exact original",
+      "ids": [
+        "T023",
+        "T024",
+        "T032",
+        "T043"
+      ],
+      "status": "passed",
+      "durationMs": 591
+    },
+    {
+      "name": "Local PDF renderer displays pages offline and bounds 501-page documents",
+      "ids": [
+        "T025",
+        "T034",
+        "T043"
+      ],
+      "status": "passed",
+      "durationMs": 572
+    },
+    {
+      "name": "Editable user fields, submission state, combined search and pinned filters",
+      "ids": [
+        "T010",
+        "T041",
+        "T067"
+      ],
+      "status": "passed",
+      "durationMs": 809
+    },
+    {
+      "name": "Text comparison shows deterministic edits and supports current file",
+      "ids": [
+        "T044",
+        "T045"
+      ],
+      "status": "passed",
+      "durationMs": 230
+    },
+    {
+      "name": "Complete backup through production UI is independently valid",
+      "ids": [
+        "T048",
+        "T063",
+        "T069"
+      ],
+      "status": "passed",
+      "durationMs": 378
+    },
+    {
+      "name": "Fresh browser profile imports exact metadata and bytes; reimport preserves local edits",
+      "ids": [
+        "T030",
+        "T031",
+        "T048",
+        "T051"
+      ],
+      "status": "passed",
+      "durationMs": 2867
+    },
+    {
+      "name": "Keyboard modal navigation and explicit deletion preserve other files",
+      "ids": [
+        "T035",
+        "T036",
+        "T052"
+      ],
+      "status": "passed",
+      "durationMs": 678
+    },
+    {
+      "name": "Chinese and English light/dark layouts fit desktop and narrow windows",
+      "ids": [
+        "T052",
+        "T053"
+      ],
+      "status": "passed",
+      "durationMs": 812
+    },
+    {
+      "name": "Clear-all UI requires the exact challenge and removes only the test vault",
+      "ids": [
+        "T038",
+        "T059"
+      ],
+      "status": "passed",
+      "durationMs": 173
+    },
+    {
+      "name": "Automated accessibility audit and local network boundary",
+      "ids": [
+        "T034",
+        "T052"
+      ],
+      "status": "passed",
+      "durationMs": 187
+    }
+  ],
+  "limitations": [
+    "Only the copied test manifest pregrants loopback host permission; native prompt verification is recorded separately."
+  ],
+  "browser": "153.0.8010.12",
+  "status": "passed",
+  "pageErrors": [],
+  "externalRequests": []
+}

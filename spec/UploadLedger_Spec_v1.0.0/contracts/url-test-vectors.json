@@ -1,0 +1,61 @@
+[
+  {
+    "input": "https://example.test/apply?token=secret#step2",
+    "mode": "origin_path",
+    "expected": {
+      "origin": "https://example.test",
+      "location": "https://example.test/apply"
+    }
+  },
+  {
+    "input": "https://user:password@example.test/a/b?x=1#c",
+    "mode": "origin_path",
+    "expected": {
+      "origin": "https://example.test",
+      "location": "https://example.test/a/b"
+    }
+  },
+  {
+    "input": "https://example.test/a/b?x=1",
+    "mode": "origin_only",
+    "expected": {
+      "origin": "https://example.test",
+      "location": "https://example.test"
+    }
+  },
+  {
+    "input": "http://127.0.0.1:8766/form?test=dummy",
+    "mode": "origin_path",
+    "expected": {
+      "origin": "http://127.0.0.1:8766",
+      "location": "http://127.0.0.1:8766/form"
+    }
+  },
+  {
+    "input": "https://EXAMPLE.test:443",
+    "mode": "origin_path",
+    "expected": {
+      "origin": "https://example.test",
+      "location": "https://example.test/"
+    }
+  },
+  {
+    "input": "file:///Users/example/private.txt",
+    "mode": "origin_path",
+    "expectedError": "E_UNSUPPORTED_CONTEXT"
+  },
+  {
+    "input": "javascript:alert(1)",
+    "mode": "origin_path",
+    "expectedError": "E_UNSUPPORTED_CONTEXT"
+  },
+  {
+    "input": "https://example.test/application/person-123",
+    "mode": "origin_path",
+    "expected": {
+      "origin": "https://example.test",
+      "location": "https://example.test/application/person-123"
+    },
+    "warning": "路径仍可包含身份信息，origin_only 由用户选择。"
+  }
+]

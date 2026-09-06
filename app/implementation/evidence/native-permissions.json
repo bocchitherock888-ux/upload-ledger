@@ -1,0 +1,8 @@
+{
+  "nativeGrant": true,
+  "removed": true,
+  "grantedAfterRemove": false,
+  "browser": "153.0.8010.12",
+  "applicationVersion": "1.0.0",
+  "grantInteraction": "User clicked Allow in native Chrome prompt"
+}

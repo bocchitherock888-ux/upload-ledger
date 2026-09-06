@@ -1,0 +1,17 @@
+[
+  {
+    "utf8": "",
+    "byteLength": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "utf8": "abc",
+    "byteLength": 3,
+    "sha256": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+  },
+  {
+    "utf8": "留底\n",
+    "byteLength": 7,
+    "sha256": "75065fcc3945d4d1ba914651afd3ec2843648d302f9793398d777797d1a1c6df"
+  }
+]

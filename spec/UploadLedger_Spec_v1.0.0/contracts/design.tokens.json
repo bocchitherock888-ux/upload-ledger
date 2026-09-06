@@ -1,0 +1,44 @@
+{
+  "fontFamily": "system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif",
+  "fontSize": {
+    "body": 14,
+    "small": 12,
+    "h1": 26,
+    "h2": 20
+  },
+  "lineHeight": 1.6,
+  "space": [
+    4,
+    8,
+    12,
+    16,
+    24,
+    32,
+    48
+  ],
+  "radius": {
+    "control": 8,
+    "card": 12
+  },
+  "colour": {
+    "background": "#F6F7F9",
+    "surface": "#FFFFFF",
+    "text": "#17212E",
+    "muted": "#536274",
+    "border": "#DCE2E9",
+    "accent": "#2563A6",
+    "danger": "#B42318",
+    "warning": "#8A5800",
+    "success": "#166348"
+  },
+  "layout": {
+    "popupWidth": 380,
+    "popupMaxHeight": 560,
+    "sidebarWidth": 220,
+    "contentMaxWidth": 1440
+  },
+  "motion": {
+    "durationMs": 120,
+    "honourReducedMotion": true
+  }
+}

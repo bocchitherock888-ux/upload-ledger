@@ -1,0 +1,37 @@
+{
+  "name": "upload-ledger",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc --noEmit && node scripts/build.mjs",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "test:e2e": "node tests/acceptance.mjs && node tests/ui-browser.mjs && node tests/migration-browser.mjs",
+    "test:site": "node ../spec/UploadLedger_Spec_v1.0.0/testkit/server.mjs",
+    "package": "python3 scripts/package.py",
+    "test:performance": "node tests/performance-browser.mjs"
+  },
+  "dependencies": {
+    "@noble/hashes": "2.4.0",
+    "@zip.js/zip.js": "2.11.2",
+    "idb": "8.0.3",
+    "lucide-react": "1.41.0",
+    "pdfjs-dist": "6.3.289",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "zod": "4.5.4"
+  },
+  "devDependencies": {
+    "@types/chrome": "0.2.9",
+    "@types/node": "26.4.1",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.7",
+    "axe-core": "4.13.0",
+    "fake-indexeddb": "6.2.5",
+    "playwright": "1.63.0",
+    "prettier": "3.9.6",
+    "tsx": "4.23.13",
+    "typescript": "7.0.2",
+    "vite": "8.2.2"
+  }
+}

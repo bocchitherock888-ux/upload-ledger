@@ -1,0 +1,52 @@
+
+> upload-ledger@1.0.0 test
+> node --import tsx --test tests/*.test.ts
+
+✔ export streams a self-contained archive whose manifest, bytes and SHA roundtrip (42.527041ms)
+✔ backup planning resolves selected records beyond page one and recharges shared objects in each part (1168.868167ms)
+✔ strict JSON rejects duplicate properties at every depth and non-finite syntax (24.01875ms)
+✔ manifest validator rejects unknown fields and unreferenced descriptors (7.000875ms)
+✔ immutable record comparison is semantic across JSON property ordering (0.963791ms)
+✔ browser-independent ZIP validator accepts valid fixture and rejects path, duplicate and checksum fixtures (17.666292ms)
+✔ reference Python validator independently agrees on the four canonical fixtures (199.236125ms)
+✔ validated staging stays invisible until atomic publication and preserves every byte hash (21.616833ms)
+✔ reimport is idempotent and retains newer local user and submission state (14.129667ms)
+✔ immutable record conflict blocks whole import and cancellation leaves old library intact (11.8395ms)
+✔ publication rolls back records and object references after a late audit-key collision (6.512417ms)
+✔ caller binding and expired-job recovery clean only staged chunks (5.636666ms)
+✔ manifest staging detects durable chunk corruption before schema validation (2.908292ms)
+✔ rules and strict protocol protect URLs, ports, Base64 and all command payloads (3.388375ms)
+✔ lost acknowledgements retry capture with one request ID and send non-idempotent UI writes once (251.308167ms)
+✔ batch admission is atomic, idempotent, complete, queued and private for exclusions (6.938208ms)
+✔ background rejects drop capture when the exact-site opt-in is disabled (0.957917ms)
+✔ simultaneous BEGIN transactions cannot overbook the byte budget (2.212083ms)
+✔ persistent queue advances and chunk retries enforce order, caller, policy and vault epochs (5.406042ms)
+✔ a seven-file batch drains in selection order without a queued-session deadlock (12.804583ms)
+✔ durable capture hashes independently, deduplicates, supports zero bytes and lease-only reads (47.957583ms)
+✔ usage keeps partial, reservation, dedup staging and garbage bytes charged (34.117459ms)
+✔ usage sums chunk index keys without cloning stored bodies (12.349083ms)
+✔ quota classification records a failed terminal state and releases reservation (1.431959ms)
+✔ source loss and expiry interrupt partial files while complete bytes recover (14.899792ms)
+✔ queued sessions use their absolute deadline while active sessions use idle expiry (1.386584ms)
+✔ expiry recovery finalises complete bytes and pause leaves manual intake usable (3.23825ms)
+✔ settings and record revisions reject concurrent stale writes atomically (3.1725ms)
+✔ maximum user notes remain exportable with bounded audit transitions (3.083542ms)
+✔ leases block deletion, then refcounts and bounded GC release shared content (11.504542ms)
+✔ stable paging follows record ID ascending, binds cursors to filters and searches title with tag OR (6.210041ms)
+✔ clear uses caller-bound challenge, advances generations and rejects late writes (2.2305ms)
+✔ clear blocks active read leases and cancels active import staging through its generation (3.394708ms)
+✔ v1 database upgrades in place and state defaults merge without record loss (0.979ms)
+✔ caller roles require exact extension paths, top frame, origin and normal mode (0.210416ms)
+✔ UTF-8 decoding accepts BOM and rejects invalid and binary content (0.874625ms)
+✔ preview classifier keeps SVG and HTML as inert text (0.286375ms)
+✔ safe filename removes traversal, separators, controls and bidi controls (0.633958ms)
+✔ local date boundaries cover the complete device-local day (1.306958ms)
+✔ bounded line diff is deterministic and marks insertions and removals (1.102834ms)
+ℹ tests 40
+ℹ suites 0
+ℹ pass 40
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1560.389542

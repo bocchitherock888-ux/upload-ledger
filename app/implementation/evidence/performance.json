@@ -1,0 +1,70 @@
+{
+  "startedAt": "2026-09-06T08:57:49.560Z",
+  "results": [
+    {
+      "name": "50 MiB normal copy and 200 MiB sequential batch preserve every byte",
+      "ids": [
+        "T014",
+        "T054"
+      ],
+      "status": "passed",
+      "durationMs": 44151,
+      "details": {
+        "batchBytes": 209715200,
+        "totalMs": 43890,
+        "first50MiBMs": 9614,
+        "normal50MiBTargetMs": 15000,
+        "jsHeapPeakBytes": {
+          "app": 7154223,
+          "page": 52170181
+        },
+        "memoryObservation": "Chrome performance.memory samples of page/UI JS heaps; excludes browser native buffers, PDF worker and service-worker process. Full process RSS target remains separately unverified."
+      }
+    },
+    {
+      "name": "Oversized file yields metadata only; directory input is skipped",
+      "ids": [
+        "T014",
+        "T046",
+        "T057"
+      ],
+      "status": "passed",
+      "durationMs": 435
+    },
+    {
+      "name": "Ten thousand metadata records search and render without loading originals",
+      "ids": [
+        "T041",
+        "T042"
+      ],
+      "status": "passed",
+      "durationMs": 4012,
+      "details": {
+        "records": 10000,
+        "samplesMs": [
+          315,
+          316,
+          316,
+          316,
+          317,
+          317,
+          318,
+          318,
+          322,
+          342
+        ],
+        "p50Ms": 317,
+        "p95Ms": 342,
+        "targetMs": 500,
+        "measurement": "UI search input to rendered result, including 180 ms debounce and 100 ms sampling interval"
+      }
+    }
+  ],
+  "limitations": [
+    "Only the copied test manifest pregrants loopback host permission; native prompt verification is recorded separately."
+  ],
+  "browser": "153.0.8010.12",
+  "status": "passed",
+  "pageErrors": [],
+  "externalRequests": []
+}

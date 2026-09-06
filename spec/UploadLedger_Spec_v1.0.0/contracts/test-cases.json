@@ -1,0 +1,1447 @@
+{
+  "specVersion": "1.0.0",
+  "executionNotice": "这是扩展开发验收计划。初始全部 not_run；本包自检见 QA_REPORT.md。",
+  "tests": [
+    {
+      "id": "T001",
+      "title": "初装零采集",
+      "requirements": [
+        "REQ-001",
+        "REQ-010"
+      ],
+      "priority": "P0",
+      "kind": "browser",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "全新 profile 加载扩展，打开测试页并真实选择文件。"
+      ],
+      "expected": [
+        "未授权站点无记录、会话或文件块",
+        "站点列表为空。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T002",
+      "title": "逐站授权与即时启用",
+      "requirements": [
+        "REQ-002"
+      ],
+      "priority": "P0",
+      "kind": "browser",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "通过弹窗授权当前测试站点，再选文件",
+        "检查浏览器权限和动态脚本。"
+      ],
+      "expected": [
+        "只启用选定 origin",
+        "授权拒绝保持关闭",
+        "刷新提示符合实测。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T003",
+      "title": "标准单选多选及详情",
+      "requirements": [
+        "REQ-003",
+        "REQ-005",
+        "REQ-016"
+      ],
+      "priority": "P0",
+      "kind": "browser",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "分别从普通、multiple、动态和隐藏 input 选择虚构样本。"
+      ],
+      "expected": [
+        "每文件一记录，batch 分组正确",
+        "ready 下载的长度及摘要匹配。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T004",
+      "title": "网页立即清空和移除 input",
+      "requirements": [
+        "REQ-003",
+        "REQ-004"
+      ],
+      "priority": "P0",
+      "kind": "browser",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "选择后测试页同步清空 value 或移除 input。"
+      ],
+      "expected": [
+        "已取得的 File 引用仍可完成",
+        "网页原本行为保持。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T005",
+      "title": "同名文件不同内容",
+      "requirements": [
+        "REQ-006"
+      ],
+      "priority": "P0",
+      "kind": "browser",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "依次选择 fixtures/v1/proposal.txt 与 v2/proposal.txt。"
+      ],
+      "expected": [
+        "两条记录，两种摘要，分别能取回对应字节。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T006",
+      "title": "同内容多次选择与别名",
+      "requirements": [
+        "REQ-007"
+      ],
+      "priority": "P0",
+      "kind": "browser",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "同一文件重复选择，再选名称不同但内容相同的样本。"
+      ],
+      "expected": [
+        "每次真实动作独立记录",
+        "字节对象只有一个",
+        "refCount 正确。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T007",
+      "title": "撤销授权中的采集",
+      "requirements": [
+        "REQ-002",
+        "REQ-014"
+      ],
+      "priority": "P0",
+      "kind": "fault",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "慢速采集期间撤销该站点",
+        "随后重放块消息。"
+      ],
+      "expected": [
+        "该站点未发布会话终止",
+        "旧 epoch/token 被拒绝",
+        "已有 ready 保留。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T008",
+      "title": "全局暂停与策略版本",
+      "requirements": [
+        "REQ-015",
+        "REQ-008"
+      ],
+      "priority": "P0",
+      "kind": "fault",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "两个站点同时采集，开启全局暂停",
+        "尝试新 BEGIN/CHUNK。"
+      ],
+      "expected": [
+        "两站点新写入停止，用户状态保持独立",
+        "恢复后需新会话。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T009",
+      "title": "选择后取消网页提交",
+      "requirements": [
+        "REQ-008"
+      ],
+      "priority": "P0",
+      "kind": "browser",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "选文件并保存后取消网站上传",
+        "查看记录再手动标记取消。"
+      ],
+      "expected": [
+        "快照仍 ready",
+        "提交状态初始 unknown，手动后为用户标记取消。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T010",
+      "title": "部分确认与批次操作",
+      "requirements": [
+        "REQ-008"
+      ],
+      "priority": "P0",
+      "kind": "browser",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "同批三文件只确认一条",
+        "再执行带 revision 的批量确认。"
+      ],
+      "expected": [
+        "各记录状态独立",
+        "冲突时整批拒绝",
+        "生成对应审计。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T011",
+      "title": "块重试幂等与冲突",
+      "requirements": [
+        "REQ-005",
+        "REQ-009"
+      ],
+      "priority": "P0",
+      "kind": "integration",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "重复发送同index同摘要块，再发送同index不同字节，模拟 ACK 丢失。"
+      ],
+      "expected": [
+        "同块重试不增加大小或计数",
+        "冲突报错并不覆盖已写数据。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T012",
+      "title": "worker 中止后恢复",
+      "requirements": [
+        "REQ-009"
+      ],
+      "priority": "P0",
+      "kind": "fault",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "块 ACK 后关闭 worker，再发送 RESUME",
+        "另在 finalising 中中止。"
+      ],
+      "expected": [
+        "从落盘 nextIndex 恢复",
+        "重复 finalise 安全",
+        "ready 无假成功。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T013",
+      "title": "页面离开与缺块",
+      "requirements": [
+        "REQ-009",
+        "REQ-012"
+      ],
+      "priority": "P0",
+      "kind": "browser",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "慢速选择后立即导航或关页",
+        "分别测试已有全块和缺块。"
+      ],
+      "expected": [
+        "全块可恢复校验",
+        "缺块变 interrupted",
+        "没有空壳 ready。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T014",
+      "title": "文件与批次边界",
+      "requirements": [
+        "REQ-012"
+      ],
+      "priority": "P0",
+      "kind": "integration",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "测试上限前1字节、恰好上限、超1字节",
+        "批量数量和总量边界。"
+      ],
+      "expected": [
+        "精确按配置接受或 metadata_only/跳过，说明不含已保存假象。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T015",
+      "title": "预算耗尽与真实写入失败",
+      "requirements": [
+        "REQ-012",
+        "REQ-024"
+      ],
+      "priority": "P0",
+      "kind": "fault",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "设置低预算并并发 BEGIN",
+        "注入 QuotaExceededError。"
+      ],
+      "expected": [
+        "预留避免超售",
+        "新会话明确失败",
+        "旧原件可读且不自动删除。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T016",
+      "title": "文件读取失败与变化",
+      "requirements": [
+        "REQ-005",
+        "REQ-012"
+      ],
+      "priority": "P0",
+      "kind": "fault",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "注入 File 读取错误/长度异常，另在系统中修改源文件后继续读。"
+      ],
+      "expected": [
+        "按实际结果记录失败或完整读取",
+        "不能以元数据替代字节校验。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T017",
+      "title": "真实拖放 opt-in",
+      "requirements": [
+        "REQ-017"
+      ],
+      "priority": "P1",
+      "kind": "manual",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "从 Finder 真实拖放文件，分别测试站点 drop 开关关/开。"
+      ],
+      "expected": [
+        "关闭无捕获，开启保存",
+        "不阻断站点拖放",
+        "标注真实事件证据。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T018",
+      "title": "drop 随后的 change 去重",
+      "requirements": [
+        "REQ-007",
+        "REQ-017"
+      ],
+      "priority": "P1",
+      "kind": "browser",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "网站把同一次 drop 的 File 分配给 input 并派发 change。"
+      ],
+      "expected": [
+        "同一实际 drop 只记录一次",
+        "后续独立真实选择仍记录。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T019",
+      "title": "frame 与 Shadow 边界",
+      "requirements": [
+        "REQ-003",
+        "REQ-036"
+      ],
+      "priority": "P1",
+      "kind": "manual",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "测试同源/跨源 iframe、开放与闭合 Shadow 中的输入。"
+      ],
+      "expected": [
+        "iframe/闭合路径不误称支持",
+        "开放路径按 M0 结果登记。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T020",
+      "title": "伪造历史读取命令",
+      "requirements": [
+        "REQ-014"
+      ],
+      "priority": "P0",
+      "kind": "security",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "从测试 content caller 请求 UI 列表、导出、诊断等命令。"
+      ],
+      "expected": [
+        "统一拒绝，错误不包含历史、文件名、URL 或 token。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T021",
+      "title": "会话跨文档跨站重放",
+      "requirements": [
+        "REQ-014"
+      ],
+      "priority": "P0",
+      "kind": "security",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "替换 tab/document/origin/frame 并重放合法会话 token。"
+      ],
+      "expected": [
+        "绑定任一项不同即拒绝",
+        "不返回其他任务信息。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T022",
+      "title": "伪造已提交状态",
+      "requirements": [
+        "REQ-008",
+        "REQ-014"
+      ],
+      "priority": "P0",
+      "kind": "security",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "网页模拟成功按钮、postMessage 和 UI_SET_SUBMISSION。"
+      ],
+      "expected": [
+        "提交状态仍 unknown",
+        "只有受信 UI 的用户操作可修改。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T023",
+      "title": "文件名标题备注 XSS",
+      "requirements": [
+        "REQ-020"
+      ],
+      "priority": "P1",
+      "kind": "security",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "导入带 HTML 片段、双向控制字符和脚本样式的名称/标题/备注。"
+      ],
+      "expected": [
+        "文本显示、控制字符安全呈现",
+        "无脚本执行或 DOM 注入。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T024",
+      "title": "HTML SVG 主动内容预览",
+      "requirements": [
+        "REQ-020"
+      ],
+      "priority": "P1",
+      "kind": "security",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "选择测试 active-content.html 与 active-content.svg，尝试预览。"
+      ],
+      "expected": [
+        "按文本或元信息安全显示",
+        "无网页嵌入和外部请求。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T025",
+      "title": "PDF 渲染安全限制",
+      "requirements": [
+        "REQ-020"
+      ],
+      "priority": "P1",
+      "kind": "security",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "使用 agent 创建的合法虚构 PDF 测试链接、动作、超页数和超时。"
+      ],
+      "expected": [
+        "本地 worker",
+        "无自动外连或执行",
+        "超限降级且可下载。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T026",
+      "title": "ZIP 路径、重名与链接",
+      "requirements": [
+        "REQ-025",
+        "REQ-026"
+      ],
+      "priority": "P1",
+      "kind": "security",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "校验含 ../、反斜杠、绝对路径、重复 manifest、symlink 的小档案。"
+      ],
+      "expected": [
+        "导入前拒绝",
+        "不提取任何路径",
+        "旧库不变。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T027",
+      "title": "ZIP 输出和数量上限",
+      "requirements": [
+        "REQ-026"
+      ],
+      "priority": "P1",
+      "kind": "security",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "通过受控测试流模拟超过大小、数量、manifest 长度限制。"
+      ],
+      "expected": [
+        "真实流字节计数中止",
+        "无需制造真实压缩炸弹。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T028",
+      "title": "存储损坏发现",
+      "requirements": [
+        "REQ-031"
+      ],
+      "priority": "P1",
+      "kind": "fault",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "直接损坏测试对象一块，再预览/下载/导出。"
+      ],
+      "expected": [
+        "重算失败，标记所有引用为 corrupt",
+        "保留元信息并拒绝正常下载。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T029",
+      "title": "消息大小与速率",
+      "requirements": [
+        "REQ-014",
+        "REQ-012"
+      ],
+      "priority": "P0",
+      "kind": "security",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "发送超限 Base64、非法整数、额外字段和大量 BEGIN。"
+      ],
+      "expected": [
+        "解码前验证",
+        "无无限分配",
+        "有限结构化错误。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T030",
+      "title": "坏备份回滚",
+      "requirements": [
+        "REQ-026"
+      ],
+      "priority": "P1",
+      "kind": "fault",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "导入对象摘要错误/缺对象/多对象的档案，观察失败前后的库。"
+      ],
+      "expected": [
+        "没有可见新增记录",
+        "已有备注和原件完全保持。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T031",
+      "title": "重复导入与 ID 冲突",
+      "requirements": [
+        "REQ-026"
+      ],
+      "priority": "P1",
+      "kind": "integration",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "导入合法包两次",
+        "随后导入 recordId 相同但原件不同的包。"
+      ],
+      "expected": [
+        "重复跳过且保留本地用户字段",
+        "冲突整批不发布。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T032",
+      "title": "原名与下载名安全",
+      "requirements": [
+        "REQ-005",
+        "REQ-020"
+      ],
+      "priority": "P1",
+      "kind": "security",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "使用 Unicode、很长名称、路径符号和尾部点空格。"
+      ],
+      "expected": [
+        "原名按限制留存",
+        "下载名净化且真实字节不变",
+        "不作路径解释。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T033",
+      "title": "脱敏诊断",
+      "requirements": [
+        "REQ-029"
+      ],
+      "priority": "P1",
+      "kind": "security",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "产生失败后导出诊断，搜索已知虚构敏感标题、URL、字节和 token。"
+      ],
+      "expected": [
+        "只有技术版本、计数、错误码与限制",
+        "敏感测试值均不存在。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T034",
+      "title": "CSP 和离线零外发",
+      "requirements": [
+        "REQ-010",
+        "REQ-011",
+        "REQ-020"
+      ],
+      "priority": "P0",
+      "kind": "security",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "生产包中断网络后进行捕获/预览/检索",
+        "监听扩展发起请求。"
+      ],
+      "expected": [
+        "核心工作可运行",
+        "无 telemetry/模型/远程脚本",
+        "本地资源符合 CSP。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T035",
+      "title": "预览备份 lease 与删除",
+      "requirements": [
+        "REQ-033"
+      ],
+      "priority": "P1",
+      "kind": "fault",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "持有目标 lease 时删除/清库，取消任务后再执行",
+        "测试过期。"
+      ],
+      "expected": [
+        "使用中的对象保留",
+        "取消/过期可恢复清理",
+        "未使用对象不被误锁。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T036",
+      "title": "删除共享对象引用",
+      "requirements": [
+        "REQ-023"
+      ],
+      "priority": "P1",
+      "kind": "integration",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "两条记录共享对象，逐次删除并取回余下记录。"
+      ],
+      "expected": [
+        "首删仅减引用",
+        "末删后异步释放字节。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T037",
+      "title": "GC 中断恢复",
+      "requirements": [
+        "REQ-023"
+      ],
+      "priority": "P1",
+      "kind": "fault",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "删除最后引用后在第一个清理批次中停止 worker。"
+      ],
+      "expected": [
+        "下次有限清理恢复",
+        "预算准确",
+        "没有误删仍被引用对象。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T038",
+      "title": "清除全部与重启",
+      "requirements": [
+        "REQ-015",
+        "REQ-023"
+      ],
+      "priority": "P0",
+      "kind": "browser",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "有采集中任务时确认清除全部，完成后重启浏览器。"
+      ],
+      "expected": [
+        "资料和站点授权策略关闭",
+        "旧任务无法重新写回",
+        "清除前强确认。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T039",
+      "title": "URL 去敏与标题开关",
+      "requirements": [
+        "REQ-013",
+        "REQ-035"
+      ],
+      "priority": "P0",
+      "kind": "unit",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "输入 query/hash/credentials、IDN、不同端口，分别保存 origin_only/path。"
+      ],
+      "expected": [
+        "去敏符合 vectors",
+        "路径敏感风险有说明",
+        "关闭标题时为 null。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T040",
+      "title": "SPA 页面上下文",
+      "requirements": [
+        "REQ-013",
+        "REQ-035"
+      ],
+      "priority": "P1",
+      "kind": "browser",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "history.pushState 改路由后选择文件。"
+      ],
+      "expected": [
+        "记录选择时的清洗后路径",
+        "未沿用首次注入页面缓存。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T041",
+      "title": "搜索筛选组合",
+      "requirements": [
+        "REQ-019"
+      ],
+      "priority": "P1",
+      "kind": "browser",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "按文件名、标题、标签、备注、站点、日期、两类状态组合搜索。"
+      ],
+      "expected": [
+        "字段范围和组合逻辑一致，取消筛选可恢复",
+        "无正文默认索引。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T042",
+      "title": "大列表分页与稳定排序",
+      "requirements": [
+        "REQ-019"
+      ],
+      "priority": "P1",
+      "kind": "performance",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "生成10000条虚构记录，分页、筛选、回退并插入同毫秒记录。"
+      ],
+      "expected": [
+        "采用稳定游标",
+        "无跳重",
+        "不一次载入所有原件。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T043",
+      "title": "文本图片预览上限",
+      "requirements": [
+        "REQ-020"
+      ],
+      "priority": "P1",
+      "kind": "browser",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "测试 UTF-8/非UTF-8、超限文本、PNG和超大解码尺寸图片。"
+      ],
+      "expected": [
+        "安全预览或解释降级",
+        "关闭释放 Blob URL 与缓存。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T044",
+      "title": "小文本逐行比较",
+      "requirements": [
+        "REQ-021"
+      ],
+      "priority": "P1",
+      "kind": "unit",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "对比大小上限内的两份 UTF-8，多换行、空文件、Unicode。"
+      ],
+      "expected": [
+        "显示确定性增加/删除",
+        "内容当文本处理",
+        "超限提供摘要对照。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T045",
+      "title": "二进制比较",
+      "requirements": [
+        "REQ-021"
+      ],
+      "priority": "P1",
+      "kind": "browser",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "比较同字节不同名称、不同字节同名称和图片。"
+      ],
+      "expected": [
+        "只报告可证明的摘要/大小/时间差异，无自动语义结论。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T046",
+      "title": "metadata_only 恢复指引",
+      "requirements": [
+        "REQ-012"
+      ],
+      "priority": "P0",
+      "kind": "browser",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "触发超限及容量失败后查看详情。"
+      ],
+      "expected": [
+        "明确未保存副本",
+        "显示原因",
+        "手动补录创建新记录和新时间。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T047",
+      "title": "手动留底",
+      "requirements": [
+        "REQ-018"
+      ],
+      "priority": "P1",
+      "kind": "browser",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "从扩展页选文件，填可选来源，取消/恢复一次读取。"
+      ],
+      "expected": [
+        "source=manual_snapshot",
+        "时间是本次操作",
+        "不伪装过去已上传。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T048",
+      "title": "备份完整往返",
+      "requirements": [
+        "REQ-025",
+        "REQ-026"
+      ],
+      "priority": "P1",
+      "kind": "integration",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "导出含共享对象与用户状态的资料，在空 profile 导入并逐一下载。"
+      ],
+      "expected": [
+        "记录、摘要、审计一致",
+        "权限不导入",
+        "计数与报告准确。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T049",
+      "title": "导出降级独立分包",
+      "requirements": [
+        "REQ-025"
+      ],
+      "priority": "P1",
+      "kind": "browser",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "模拟保存选择器不可用，选取超过200MiB的样本集合。"
+      ],
+      "expected": [
+        "规划独立包，每包均能单独验证和恢复",
+        "字节预算包含开销。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T050",
+      "title": "schema 迁移与失败",
+      "requirements": [
+        "REQ-027"
+      ],
+      "priority": "P1",
+      "kind": "fault",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "用旧 schema 虚构库升级，再注入迁移事务失败。"
+      ],
+      "expected": [
+        "成功后数据可读",
+        "失败保留原库并报告，无静默重建空库。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T051",
+      "title": "卸载与新profile恢复",
+      "requirements": [
+        "REQ-034"
+      ],
+      "priority": "P1",
+      "kind": "manual",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "在专用测试 profile 备份后卸载，再重新安装导入。"
+      ],
+      "expected": [
+        "警告准确",
+        "备份可恢复",
+        "绝不在真实使用 profile 演练删除。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T052",
+      "title": "键盘与辅助技术",
+      "requirements": [
+        "REQ-028"
+      ],
+      "priority": "P1",
+      "kind": "manual",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "仅键盘完成启用、列表、预览、标记、导出、确认",
+        "VoiceOver试用。"
+      ],
+      "expected": [
+        "焦点合理、返回位置可预期、状态可读、按钮有名称。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T053",
+      "title": "双语与布局",
+      "requirements": [
+        "REQ-028"
+      ],
+      "priority": "P1",
+      "kind": "browser",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "切换简中和 en-GB",
+        "测试长文件名、200%缩放和窄窗口。"
+      ],
+      "expected": [
+        "翻译键齐全",
+        "无溢出关键按钮",
+        "状态始终可读。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T054",
+      "title": "采集主线程与内存",
+      "requirements": [
+        "REQ-005",
+        "REQ-019"
+      ],
+      "priority": "P1",
+      "kind": "performance",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "使用50MiB虚构样本，同时在页面输入与滚动，记录性能和内存。"
+      ],
+      "expected": [
+        "符合文档性能预算",
+        "分块有背压",
+        "避免整文件 Base64 常驻。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T055",
+      "title": "网站接收摘要不变",
+      "requirements": [
+        "REQ-004"
+      ],
+      "priority": "P0",
+      "kind": "browser",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "扩展开/关各上传同文件到本地 raw 端点",
+        "记录返回摘要和长度。"
+      ],
+      "expected": [
+        "服务端收到的原始体一致，网页成功/失败行为相同。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T056",
+      "title": "真实事件和自动化边界",
+      "requirements": [
+        "REQ-003",
+        "REQ-014"
+      ],
+      "priority": "P0",
+      "kind": "browser",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "按钮构造 File+dispatchEvent 与系统选择器/自动化选文件分别运行。"
+      ],
+      "expected": [
+        "isTrusted=false 被忽略",
+        "记录自动化事件实际信任值而非假定。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T057",
+      "title": "目录选择跳过",
+      "requirements": [
+        "REQ-032"
+      ],
+      "priority": "P1",
+      "kind": "manual",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "选择测试目录及普通多个文件。"
+      ],
+      "expected": [
+        "目录输入明确跳过",
+        "不遍历本地目录",
+        "普通多选仍工作。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T058",
+      "title": "零字节与分块边界",
+      "requirements": [
+        "REQ-005"
+      ],
+      "priority": "P0",
+      "kind": "unit",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "测试0、1、chunk-1、chunk、chunk+1 字节。"
+      ],
+      "expected": [
+        "零字节标准 SHA 正确，chunkCount=0",
+        "末块长度和FINISH正确。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T059",
+      "title": "清除后迟到消息",
+      "requirements": [
+        "REQ-015"
+      ],
+      "priority": "P0",
+      "kind": "fault",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "清除完成后重放旧BEGIN/CHUNK/FINISH与导入发布。"
+      ],
+      "expected": [
+        "全局版本和 job 失效",
+        "资料不会复活。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T060",
+      "title": "时间与时区变化",
+      "requirements": [
+        "REQ-008",
+        "REQ-019"
+      ],
+      "priority": "P1",
+      "kind": "unit",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "模拟时钟回拨和时区切换，记录同时间事件。"
+      ],
+      "expected": [
+        "ISO时间存储，UI当地显示",
+        "稳定排序有ID补充",
+        "时间不当成认证。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T061",
+      "title": "实际站点兼容登记",
+      "requirements": [
+        "REQ-036",
+        "REQ-030"
+      ],
+      "priority": "P1",
+      "kind": "manual",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "获得用户授权后选三个实际工作场景，用虚构文件逐路径测。"
+      ],
+      "expected": [
+        "记录确切浏览器/日期/入口",
+        "未测与失败明确保留。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T062",
+      "title": "相同主机不同端口",
+      "requirements": [
+        "REQ-002",
+        "REQ-014"
+      ],
+      "priority": "P0",
+      "kind": "browser",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "启动8765和8766，只授权8765",
+        "到8766选文件。"
+      ],
+      "expected": [
+        "应用 exactOrigin 拒绝8766",
+        "不因host pattern覆盖而采集。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T063",
+      "title": "备份不含策略和技术秘密",
+      "requirements": [
+        "REQ-013",
+        "REQ-025"
+      ],
+      "priority": "P1",
+      "kind": "security",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "导出已授权多站点的库，检查 manifest 和ZIP条目。"
+      ],
+      "expected": [
+        "没有权限、token、tab/document绑定、绝对路径或日志正文。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T064",
+      "title": "导入中途worker重启",
+      "requirements": [
+        "REQ-026"
+      ],
+      "priority": "P1",
+      "kind": "fault",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "对象已写入、记录未发布时终止worker/关管理页。"
+      ],
+      "expected": [
+        "staging不可见",
+        "恢复校验或清理",
+        "已有库保持。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T065",
+      "title": "同ID更新保留数据",
+      "requirements": [
+        "REQ-027",
+        "REQ-034"
+      ],
+      "priority": "P1",
+      "kind": "manual",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "稳定开发路径加载更新产物，另演练错误ID并记录区别。"
+      ],
+      "expected": [
+        "同ID正常升级",
+        "安装说明明确路径/ID变化和备份步骤。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T066",
+      "title": "生产包可重复构建",
+      "requirements": [
+        "REQ-030",
+        "REQ-010"
+      ],
+      "priority": "P1",
+      "kind": "integration",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "干净环境 npm ci，执行 lint/typecheck/test/build",
+        "扫描产物依赖。"
+      ],
+      "expected": [
+        "lockfile固定",
+        "资源本地",
+        "无dev连接、秘密、缺失worker或调试授权。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T067",
+      "title": "用户字段并发修改",
+      "requirements": [
+        "REQ-022"
+      ],
+      "priority": "P1",
+      "kind": "integration",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "两个管理页用同revision编辑同记录。"
+      ],
+      "expected": [
+        "首写成功，后写冲突并要求刷新",
+        "原始文件字段不可改写。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T068",
+      "title": "来源失效与净化链接",
+      "requirements": [
+        "REQ-035"
+      ],
+      "priority": "P1",
+      "kind": "browser",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "保存带query的页面和后来失效路径，点击打开来源。"
+      ],
+      "expected": [
+        "告知清洗/登录/页面删除可能影响返回",
+        "允许复制来源和备注。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T069",
+      "title": "导出中取消保存",
+      "requirements": [
+        "REQ-025"
+      ],
+      "priority": "P1",
+      "kind": "browser",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "取消选择器和中途取消 ZIP 写入。"
+      ],
+      "expected": [
+        "不显示备份成功",
+        "临时资源/lease释放",
+        "原件保持。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T070",
+      "title": "容量建议与无自动过期",
+      "requirements": [
+        "REQ-024"
+      ],
+      "priority": "P1",
+      "kind": "integration",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "创建老记录并越过时间边界，进入容量管理。"
+      ],
+      "expected": [
+        "老原件一直保留",
+        "删除只来自明确操作",
+        "pinned有说明。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T071",
+      "title": "敏感文件名跳过",
+      "requirements": [
+        "REQ-032"
+      ],
+      "priority": "P0",
+      "kind": "security",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "选择 .env、私钥样式文件及普通文件。"
+      ],
+      "expected": [
+        "命中者无持久名称、会话、字节",
+        "只短暂显示跳过计数。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T072",
+      "title": "无痕与受限页面",
+      "requirements": [
+        "REQ-010",
+        "REQ-011"
+      ],
+      "priority": "P0",
+      "kind": "manual",
+      "preconditions": "使用专用浏览器测试 profile、虚构样本和已固定版本的开发产物；故障注入只在测试构建启用。",
+      "steps": [
+        "检查manifest，尝试在无痕/Chrome设置/扩展商店启用。"
+      ],
+      "expected": [
+        "无痕不可启用",
+        "受限页面解释状态",
+        "没有旁路权限。"
+      ],
+      "status": "not_run",
+      "evidence": []
+    }
+  ]
+}

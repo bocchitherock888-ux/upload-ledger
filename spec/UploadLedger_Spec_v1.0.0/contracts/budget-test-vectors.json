@@ -1,0 +1,41 @@
+[
+  {
+    "description": "充足预算",
+    "budget": 1000,
+    "readyObjectBytes": 300,
+    "stagingChunkBytes": 100,
+    "reservedRemainingBytes": 200,
+    "candidateBytes": 400,
+    "accept": true
+  },
+  {
+    "description": "超售阻止",
+    "budget": 1000,
+    "readyObjectBytes": 300,
+    "stagingChunkBytes": 100,
+    "reservedRemainingBytes": 200,
+    "candidateBytes": 401,
+    "accept": false
+  },
+  {
+    "description": "重复内容在完整摘要前仍预留",
+    "budget": 1000,
+    "readyObjectBytes": 900,
+    "stagingChunkBytes": 0,
+    "reservedRemainingBytes": 0,
+    "candidateBytes": 200,
+    "accept": false
+  },
+  {
+    "description": "块写入只迁移预留，不双计",
+    "before": {
+      "staging": 100,
+      "remaining": 300
+    },
+    "chunkBytes": 100,
+    "after": {
+      "staging": 200,
+      "remaining": 200
+    }
+  }
+]

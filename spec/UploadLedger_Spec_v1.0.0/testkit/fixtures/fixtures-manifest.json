@@ -1,0 +1,101 @@
+{
+  "fixtures": [
+    {
+      "path": "active-content.html",
+      "byteLength": 151,
+      "sha256": "f3338df7cbb27c35053cfeb5a70e5f76f9ad2d42d79fbe5e42fdf6ebc5c34dc8",
+      "synthetic": true
+    },
+    {
+      "path": "active-content.svg",
+      "byteLength": 158,
+      "sha256": "610ad5d950be08677c3050c7a495fbff5a1d569934f5d8fee468cee29066cd3d",
+      "synthetic": true
+    },
+    {
+      "path": "bad-checksum-backup.zip",
+      "byteLength": 5882,
+      "sha256": "ff0713efdc3305b6b57ee6755cdbdee84d7adbaee14f19a29c117547bcda6d2a",
+      "synthetic": true
+    },
+    {
+      "path": "bad-duplicate-backup.zip",
+      "byteLength": 11170,
+      "sha256": "e17b9d3de2febab510515761706ed124575a97e20a77fadab29bc0908c4b08cb",
+      "synthetic": true
+    },
+    {
+      "path": "bad-path-backup.zip",
+      "byteLength": 6004,
+      "sha256": "369d84ceece8a6e078d6d42ab6f80897f857f15a6e69859a79e8d65bde2caebb",
+      "synthetic": true
+    },
+    {
+      "path": "binary.dat",
+      "byteLength": 1024,
+      "sha256": "785b0751fc2c53dc14a4ce3d800e69ef9ce1009eb327ccf458afe09c242c26c9",
+      "synthetic": true
+    },
+    {
+      "path": "empty.txt",
+      "byteLength": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "synthetic": true
+    },
+    {
+      "path": "excluded/.env",
+      "byteLength": 34,
+      "sha256": "a903973eedc613809275287712894b0fb247fa099568c125be8d86483c1ccd26",
+      "synthetic": true
+    },
+    {
+      "path": "excluded/id_ed25519",
+      "byteLength": 44,
+      "sha256": "232549a87835f6d29aaba6f388be3f004b2ab0e28861131bf3e8a039f59ba60e",
+      "synthetic": true
+    },
+    {
+      "path": "proposal-copy.txt",
+      "byteLength": 58,
+      "sha256": "18fa3596e23c95dc6a0fb46dbfa79db0927e9e599ca908205f5056ce875aecae",
+      "synthetic": true
+    },
+    {
+      "path": "sample-manifest.json",
+      "byteLength": 5186,
+      "sha256": "de275da207eac2915dfd85239232d17e3a4c5fc30dcd67d4d54f90d47010fd4c",
+      "synthetic": true
+    },
+    {
+      "path": "sample.png",
+      "byteLength": 1795,
+      "sha256": "04536bd570c5086e9e801ad5430ba98a71cb84289655fb085c5137f4c24e5176",
+      "synthetic": true
+    },
+    {
+      "path": "unicode-notes.txt",
+      "byteLength": 45,
+      "sha256": "6e1352243c51123596c650ab5394bf24eec03e5588cde3803efef192ff247570",
+      "synthetic": true
+    },
+    {
+      "path": "v1/proposal.txt",
+      "byteLength": 58,
+      "sha256": "18fa3596e23c95dc6a0fb46dbfa79db0927e9e599ca908205f5056ce875aecae",
+      "synthetic": true
+    },
+    {
+      "path": "v2/proposal.txt",
+      "byteLength": 58,
+      "sha256": "ae9b12215392b0bd638908ceaad9a0599218ec97fc53042d84ee47a261af3811",
+      "synthetic": true
+    },
+    {
+      "path": "valid-backup.zip",
+      "byteLength": 5882,
+      "sha256": "7b28a132d56e339c101835aa035ee968fd23d8c35ba7122c651131bc02693933",
+      "synthetic": true
+    }
+  ],
+  "notice": "All material is synthetic. Negative archives are intentionally invalid."
+}
