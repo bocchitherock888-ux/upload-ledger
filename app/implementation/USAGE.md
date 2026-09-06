@@ -26,4 +26,4 @@
 
 内容存储在当前浏览器配置的 IndexedDB，运行资源随扩展打包。协议、主机和端口共同确定站点范围；Chrome 的主机授权可能覆盖同主机的多个端口，应用会额外检查端口。关闭路径和标题可减少来源信息的保存。
 
-已在 macOS Chromium 153 实测，Linux GitHub CI 完成无界面回归。Chrome 120 起可安装；旧版 Chrome、Windows 和具体业务网站需另行确认。完整执行范围见 [测试报告](TEST_EVIDENCE.md)。
+已在 macOS Chromium 153 实测，Linux GitHub CI 完成无界面回归。Chrome 120 起可安装；旧版 Chrome、Windows 和具体业务网站需另行确认。
