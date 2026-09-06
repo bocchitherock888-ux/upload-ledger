@@ -1,5 +1,11 @@
 # 留底 · Upload Ledger
 
+[![最新版本](https://img.shields.io/github/v/release/bocchitherock888-ux/upload-ledger?label=release&color=234a3d)](https://github.com/bocchitherock888-ux/upload-ledger/releases/latest)
+[![构建状态](https://github.com/bocchitherock888-ux/upload-ledger/actions/workflows/verify.yml/badge.svg?branch=main)](https://github.com/bocchitherock888-ux/upload-ledger/actions/workflows/verify.yml)
+[![下载量](https://img.shields.io/github/downloads/bocchitherock888-ux/upload-ledger/total?label=downloads&color=234a3d)](https://github.com/bocchitherock888-ux/upload-ledger/releases)
+![Chrome 120+](https://img.shields.io/badge/Chrome-120%2B-555555)
+[![MIT License](https://img.shields.io/github/license/bocchitherock888-ux/upload-ledger?color=234a3d)](LICENSE)
+
 **找回你当时提交给网站的那份文件。**
 
 留底是一款安装在电脑 Chrome 浏览器里的扩展工具。你在招聘网站投简历、在学校网站交作业，或在线填写申请表时，通常要点击「上传文件」「选择文件」之类的按钮，从电脑里选一份文件交给网站。这里的“附件”，就是这些 PDF 简历、Word 作业、报名照片等文件。
